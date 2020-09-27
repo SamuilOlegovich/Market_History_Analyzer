@@ -8,19 +8,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.regex.Pattern;
 
 
 public class View extends Thread {
     private RunAndStopProgram runAndStopProgram;
+    private JTextField jTextFieldStartDate;
+    private JTextField jTextFieldEndDate;
     private JScrollPane jScrollPane;
     private JTextField jTextField;
-    private JButton jButtonStart;
-    private JButton jButtonStop;
     private Color color;
 
 
     private JTextArea jTextArea;
+    private JButton jButtonSavePattern;
+    private JButton jButtonStatistics;
+//    private JButton jButtonStart;
+//    private JButton jButtonStop;
     private JButton jButtonSet;
     private JFrame jFrame;
     private JPanel jPanel;
@@ -36,20 +40,35 @@ public class View extends Thread {
         jPanel = new JPanel();
         jFrame.add(jPanel, BorderLayout.NORTH);
         jPanel.setBackground(Color.LIGHT_GRAY);
-        jButtonStart = new JButton("START");
-        jButtonStop = new JButton("STOP");
-
-        jPanel.add(jButtonStart);
-        jPanel.add(jButtonStop);
-
+//        jButtonStart = new JButton("START");
+//        jButtonStop = new JButton("STOP");
+//        jPanel.add(jButtonStart);
+//        jPanel.add(jButtonStop);
 
         jPanel.add(new JLabel("Commands"));
-        jTextField = new JTextField("insert commands or date 17:10_31.12.2020 => 18:15_10.01.2021",30);
+        jTextField = new JTextField("insert commands...",30);
         jPanel.add(jTextField);
         jPanel.revalidate();
-
         jButtonSet = new JButton("SET");
         jPanel.add(jButtonSet);
+
+
+        jPanel.add(new JLabel("Start date"));
+        jTextFieldStartDate = new JTextField("enter date... ",13);
+        jPanel.add(jTextFieldStartDate);
+
+        jPanel.add(new JLabel("End date"));
+        jTextFieldEndDate = new JTextField("hh:mm_dd.mm.yyyy",13);
+        jPanel.add(jTextFieldEndDate);
+
+        jButtonStatistics = new JButton("STATISTICS");
+        jPanel.add(jButtonStatistics);
+
+        jButtonSavePattern = new JButton("SAVE PATTERN");
+        jPanel.add(jButtonSavePattern);
+
+
+
 
         jTextArea = new JTextArea(35, 90);
         jScrollPane = new JScrollPane(jTextArea);
