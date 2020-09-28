@@ -1,7 +1,7 @@
-package view;
+package model;
 
-import model.Enums;
-import model.Gasket;
+import view.ConsoleHelper;
+import view.StringHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class DataParser extends Thread {
             new PatternFinder(start, end);
         } catch (Exception e) {
             ConsoleHelper.writeMessage(StringHelper.getString(Enums.WRONG_DATE_FORMAT));
-            Gasket.getViewThread().setPreviousColor();
+            Gasket.getViewThreadClass().setPreviousColor();
         }
     }
 

@@ -1,7 +1,9 @@
-package view;
+package model;
 
 import model.Enums;
 import model.Gasket;
+import view.ConsoleHelper;
+import view.StringHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,16 +24,26 @@ public class PatternFinder extends Thread {
     }
 
     public void run() {
-        ArrayList<String> patternStrings = removeEmptyCandles(getAllCandlesPattern());
+        // получаем лист истории
+        ArrayList<String> history = new ArrayList<>();
+        // получаем список свечей имеющих уровни
+        ArrayList<String> candlesStrings = removeEmptyCandles(getAllCandlesPattern(history));
+        // получаем уже список непосредственно уровней уровней
+        ArrayList<String> levels = getLevels(candlesStrings);
 
+
+
+
+        candlesStrings.clear();
+        history.clear();
+        levels.clear();
     }
 
     // получить все свечи паттерна
-    private ArrayList<String> getAllCandlesPattern() {
-        ArrayList<String> history = new ArrayList<>(); // сделать получение листа
+    private ArrayList<String> getAllCandlesPattern(ArrayList<String> in) {
         ArrayList<String> result = new ArrayList<>();
 
-        for (String s : history) {
+        for (String s : in) {
             try {
                 long dateThisCandle = getDate(s);
                 if (start.getTime() <= dateThisCandle && end.getTime() >= dateThisCandle) {
@@ -39,10 +51,9 @@ public class PatternFinder extends Thread {
                 }
             } catch (Exception e) {
                 ConsoleHelper.writeMessage(StringHelper.getString(Enums.WRONG_DATE_FORMAT_IN_THE_HISTORY_FILE));
-                Gasket.getViewThread().setPreviousColor();
+                Gasket.getViewThreadClass().setPreviousColor();
             }
         }
-        history.clear();
         return result;
     }
 
@@ -54,6 +65,24 @@ public class PatternFinder extends Thread {
             }
         }
         return in;
+    }
+
+    // распарсиваем и получаем массив уровней
+    private ArrayList<String> getLevels(ArrayList<String> in) {
+        ArrayList<String> levels = new ArrayList<>();
+        for (String s : in) {
+            String[] str = s.replaceAll("\\{", "")
+                    .replaceAll("}", "")
+                    .split(",\"levels\": ");
+
+            String[] strings = str[1].split("],\\[");
+
+            for (String ss : strings) {
+                levels.add(ss.replaceAll("\\[\\[", "")
+                        .replaceAll("]]", ""));
+            }
+        }
+        return levels;
     }
 
 

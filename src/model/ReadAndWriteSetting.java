@@ -1,0 +1,81 @@
+package model;
+
+import controller.ExecutorCommandos;
+import view.ConsoleHelper;
+import view.StringHelper;
+import view.WriterAndReadFile;
+
+import java.util.ArrayList;
+
+
+
+public class ReadAndWriteSetting {
+    private ExecutorCommandos executorCommandos;
+    private String path;
+
+
+
+    public ReadAndWriteSetting(ExecutorCommandos executorCommandos) {
+        this.path = Gasket.getFilesAndPathCreatorClass().getPathSettings();
+        this.executorCommandos = executorCommandos;
+        readFileSettings();
+    }
+
+
+
+    private void readFileSettings() {
+        executorCommandos.setReadAndWriteSetting(this);
+
+        try {
+            ArrayList<String> listSettings =  WriterAndReadFile.readFile(path);
+
+            if (listSettings.size() < 1) {
+                try {
+                    ConsoleHelper.writeMessage(StringHelper
+                            .getString(Enums.FILE_SETTINGS_NOT_DETECTED_STANDARD_SETTINGS_INCLUDED));
+                    WriterAndReadFile.writerFile(getStringWrite(), path, false);
+                } catch (Exception ex) {
+                    ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_FILE_WRITE_ERROR));
+                }
+            }
+
+
+            for (String string : listSettings) {
+                if (string.equalsIgnoreCase(Enums.END.toString())) {
+                    ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_SUCCESSFULLY_READ));
+                    return;
+                }
+
+                String[] strings;
+
+                if (string.length() > 4
+                        && !string.equalsIgnoreCase(Gasket.getSettingNow())) {
+                    strings = string.split(" ----- ");
+                    executorCommandos.parseAndExecute(strings[0]);
+                }
+            }
+
+        } catch (Exception e) {
+            ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_FILE_READING_ERROR));
+        }
+    }
+
+
+
+    public void writeSettings() {
+        try {
+            WriterAndReadFile.writerFile(getStringWrite(), path, false);
+        } catch (Exception e) {
+            ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_WONT_OVERWRITE_AFTER_THE_CHANGE_COMMAND));
+        }
+    }
+
+
+
+    private String getStringWrite() {
+        return ConsoleHelper.getStringInfoSettings()
+                + "\n"
+                + Enums.END.toString()
+                + "\n";
+    }
+}
