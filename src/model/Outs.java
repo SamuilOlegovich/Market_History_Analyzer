@@ -1,6 +1,6 @@
 package model;
 
-public enum Enums {
+public enum Outs {
     PROGRAM_STOPPED,
     ПРОГРАММА_ОСТАНОВЛЕНА,
     PROGRAM_SUCCESSFULLY_LAUNCHED,
@@ -25,7 +25,10 @@ public enum Enums {
     ИСТОРИИ_В_ФАЙЛЕ_НЕ_ОБНАРУЖЕНО,
     HISTORY_FILE_READING_ERROR,
     ОШИБКА_В_ЧТЕНИИ_ФАЙЛА_ИСТОРИИ,
+    SAVED_PATTERNS_FILE_WRITE_ERROR,
+    ОШИБКА_В_ЗАПИСИ_ФАЙЛА_СОХРАНЕННЫХ_ПАТТЕРНОВ,
     SETTINGS_SUCCESSFULLY_READ,
-    END,
-    levels;
+    НАСТРОЙКИ_УСПЕШНО_СЧИТАНЫ,
+    NO_PATTERN_TO_SAVE,
+    НЕТ_ПАТТЕРНА_ДЛЯ_СОХРАНЕНИЯ;
 }

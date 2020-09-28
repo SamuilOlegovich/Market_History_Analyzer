@@ -46,4 +46,17 @@ public class ConsoleHelper {
                 + " ----- на сколько время в терминале отстает или опережает местное\n"
                 + "\n";
     }
+
+
+
+    public static void printInfoSettings() {
+        ConsoleHelper.writeMessage("\n\n"
+                + getStringInfoSettings()
+                + "\n"
+                + "\nЕСЛИ ВЫ ЖЕЛАЕТЕ - ЭТИ НАСТРОЙКИ МОЖНО ИЗМЕНИТЬ\n"
+                + "ВВЕДИТЕ ЖЕЛАЕМЫЙ ПАРАМЕТР И ЗНАЧЕНИЕ В ФОРМАТЕ\n"
+                + "команда=значение ----> PORT=777\n"
+                + "\n"
+        );
+    }
 }

@@ -26,7 +26,7 @@ public class DataParser extends Thread {
             Date end = getDate(endDate);
             new PatternFinder(start, end);
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.WRONG_DATE_FORMAT));
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.WRONG_DATE_FORMAT));
             Gasket.getViewThreadClass().setPreviousColor();
         }
     }

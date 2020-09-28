@@ -32,17 +32,17 @@ public class ReadAndWriteSetting {
             if (listSettings.size() < 1) {
                 try {
                     ConsoleHelper.writeMessage(StringHelper
-                            .getString(Enums.FILE_SETTINGS_NOT_DETECTED_STANDARD_SETTINGS_INCLUDED));
+                            .getString(Outs.FILE_SETTINGS_NOT_DETECTED_STANDARD_SETTINGS_INCLUDED));
                     WriterAndReadFile.writerFile(getStringWrite(), path, false);
                 } catch (Exception ex) {
-                    ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_FILE_WRITE_ERROR));
+                    ConsoleHelper.writeMessage(StringHelper.getString(Outs.SETTINGS_FILE_WRITE_ERROR));
                 }
             }
 
 
             for (String string : listSettings) {
-                if (string.equalsIgnoreCase(Enums.END.toString())) {
-                    ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_SUCCESSFULLY_READ));
+                if (string.equalsIgnoreCase(Str.END.toString())) {
+                    ConsoleHelper.writeMessage(StringHelper.getString(Outs.SETTINGS_SUCCESSFULLY_READ));
                     return;
                 }
 
@@ -56,7 +56,7 @@ public class ReadAndWriteSetting {
             }
 
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_FILE_READING_ERROR));
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.SETTINGS_FILE_READING_ERROR));
         }
     }
 
@@ -66,7 +66,7 @@ public class ReadAndWriteSetting {
         try {
             WriterAndReadFile.writerFile(getStringWrite(), path, false);
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.SETTINGS_WONT_OVERWRITE_AFTER_THE_CHANGE_COMMAND));
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.SETTINGS_WONT_OVERWRITE_AFTER_THE_CHANGE_COMMAND));
         }
     }
 
@@ -75,7 +75,7 @@ public class ReadAndWriteSetting {
     private String getStringWrite() {
         return ConsoleHelper.getStringInfoSettings()
                 + "\n"
-                + Enums.END.toString()
+                + Str.END.toString()
                 + "\n";
     }
 }

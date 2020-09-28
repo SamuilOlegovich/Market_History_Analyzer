@@ -1,11 +1,9 @@
 package controller;
 
-import model.FilesAndPathCreator;
-import model.Gasket;
-import model.ReadAndWriteSetting;
-import model.ReadHistory;
+import model.*;
 import view.View;
 
+import java.util.ArrayList;
 
 
 public class Main {
@@ -31,8 +29,17 @@ public class Main {
         FilesAndPathCreator filesAndPathCreator = new FilesAndPathCreator();
         ExecutorCommandos executorCommandos = new ExecutorCommandos();
         ReadAndWriteSetting readAndWriteSetting = new ReadAndWriteSetting(executorCommandos);
+        WritePatterns writePatterns = new WritePatterns();
         ReadHistory readHistory = new ReadHistory();
 
+
+
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        arrayList.add("{\"candle\": [\"time\": \"2020-05-21 15:30:00\",\"open\": \"9092.5\",\"close\": \"9085.0\",\"high\": \"9093.0\",\"low\": \"9081.0\",\"dir\": \"-1\"]}");
+//        arrayList.add("{\"candle\": [\"time\": \"2020-05-21 15:31:00\",\"open\": \"9092.5\",\"close\": \"9085.0\",\"high\": \"9093.0\",\"low\": \"9081.0\",\"dir\": \"-1\"],\"levels\": [[\"period\": \"M5\",\"preview\": \"1\",\"price\": \"9075.5\",\"value\": \"-635002\",\"type\": \"DELTA_BID_HL\",\"avg\": \"0\"],[\"period\": \"M5\",\"preview\": \"1\",\"price\": \"9076.0\",\"value\": \"216117\",\"type\": \"OPEN_POS_ASK_PLUS\",\"avg\": \"505609\"]]}");
+//        arrayList.add("{\"candle\": [\"time\": \"2020-05-21 15:32:00\",\"open\": \"9092.5\",\"close\": \"9085.0\",\"high\": \"9093.0\",\"low\": \"9081.0\",\"dir\": \"-1\"]}");
+//        arrayList.add("{\"candle\": [\"time\": \"2020-05-21 15:32:00\",\"open\": \"9092.5\",\"close\": \"9085.0\",\"high\": \"9093.0\",\"low\": \"9081.0\",\"dir\": \"-1\"]}");
+//        writePatterns.writePattern(arrayList);
     }
 
 }

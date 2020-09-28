@@ -1,6 +1,6 @@
 package view;
 
-import model.Enums;
+import model.Outs;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class WriterAndReadFile {
             writer.write(string);
             writer.flush();
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.FILE_WRITE_ERROR)
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.FILE_WRITE_ERROR)
                     + " - " + string + " === " + path);
         }
     }
@@ -29,7 +29,7 @@ public class WriterAndReadFile {
                 arrayList.add(reader.readLine());
             }
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.FILE_READING_ERROR) + " - " + path);
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.FILE_READING_ERROR) + " - " + path);
             throw new Exception();
         }
         return arrayList;

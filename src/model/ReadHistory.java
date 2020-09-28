@@ -15,7 +15,7 @@ public class ReadHistory {
 
 
     public ReadHistory() {
-        this.path = Gasket.getFilesAndPathCreatorClass().getPathSettings();
+        this.path = Gasket.getFilesAndPathCreatorClass().getPathHistory();
         this.historyList = new ArrayList<>();
         Gasket.setReadHistoryClass(this);
         readFileHistory();
@@ -27,10 +27,10 @@ public class ReadHistory {
         try {
             historyList.addAll(WriterAndReadFile.readFile(path));
             if (historyList.size() < 1) {
-                ConsoleHelper.writeMessage(StringHelper.getString(Enums.FILE_HISTORY_NOT_DETECTED));
+                ConsoleHelper.writeMessage(StringHelper.getString(Outs.FILE_HISTORY_NOT_DETECTED));
             }
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(StringHelper.getString(Enums.HISTORY_FILE_READING_ERROR));
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.HISTORY_FILE_READING_ERROR));
         }
     }
 

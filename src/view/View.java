@@ -2,6 +2,7 @@ package view;
 
 import controller.RunAndStopProgram;
 import model.DataParser;
+import model.Gasket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,10 +39,6 @@ public class View extends Thread {
         jPanel = new JPanel();
         jFrame.add(jPanel, BorderLayout.NORTH);
         jPanel.setBackground(Color.LIGHT_GRAY);
-//        jButtonStart = new JButton("START");
-//        jButtonStop = new JButton("STOP");
-//        jPanel.add(jButtonStart);
-//        jPanel.add(jButtonStop);
 
         jPanel.add(new JLabel("Commands"));
         jTextField = new JTextField("insert commands...",30);
@@ -76,41 +73,6 @@ public class View extends Thread {
         startFlag = true;
 
 
-
-//        jButtonStart.addActionListener(new ActionListener() {
-//            //            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                // тут прописать старт программы
-//                color = jPanel.getBackground();
-//                jPanel.setBackground(Color.GREEN);
-//
-//                if (runAndStopProgram != null) {
-//                    runAndStopProgram.startProgram();
-//                    ConsoleHelper.writeMessage(StringHelper.getString(Enums.PROGRAM_SUCCESSFULLY_LAUNCHED));
-//                }
-//                if (runAndStopProgram == null) {
-//                    runAndStopProgram = new RunAndStopProgram();
-//                    Gasket.setRunProgramClass(runAndStopProgram);
-//                }
-//            }
-//        });
-
-
-//        jButtonStop.addActionListener(new ActionListener() {
-//            //            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                // тут прописать Стоп программы
-//                color = jPanel.getBackground();
-//                jPanel.setBackground(Color.RED);
-//
-//                runAndStopProgram.stopPrograms();
-//                ConsoleHelper.writeMessage(StringHelper.getString(Enums.PROGRAM_STOPPED));
-//
-//            }
-//        });
-
-
         jButtonSet.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,7 +95,7 @@ public class View extends Thread {
                 String string = jTextField.getText();
                 if (string.length() > 3) {
                     if (string.trim().equalsIgnoreCase("info")) {
-//                        ConsoleHelper.printInfoSettings();
+                        ConsoleHelper.printInfoSettings();
                     } else if (string.trim().equalsIgnoreCase("commands")) {
 //                        ConsoleHelper.showCommands();
                     } else {
@@ -160,8 +122,26 @@ public class View extends Thread {
 
                 String startDate = jTextFieldStartDate.getText();
                 String endDate = jTextFieldEndDate.getText();
-//                ConsoleHelper.writeMessage(startDate + " --- " + endDate);
                 new DataParser(startDate, endDate);
+            }
+        });
+
+
+        jButtonSavePattern.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                // тут прописать настройки программы
+                new Thread() {
+                    @Override
+                    public void run() {
+                        color = jPanel.getBackground();
+                        jPanel.setBackground(Color.BLUE);
+                        setPreviousColor();
+                    }
+                }.start();
+
+                Gasket.getWritePatternsClass().writePattern();
             }
         });
     }
@@ -178,7 +158,7 @@ public class View extends Thread {
 
         jFrame.setSize(1110, 635);
         jFrame.setLocation(dimension.width/2 - 570, dimension.height/2 - 325);
-        jFrame.setTitle("POWER by SAMUIL_OLEGOVICH");
+        jFrame.setTitle("ANALYZER - POWER by SAMUIL_OLEGOVICH");
 //        jFrame.setIconImage();
         return jFrame;
     }

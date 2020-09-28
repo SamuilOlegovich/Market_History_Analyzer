@@ -1,7 +1,5 @@
 package model;
 
-import model.Enums;
-import model.Gasket;
 import view.ConsoleHelper;
 import view.StringHelper;
 
@@ -17,27 +15,29 @@ public class PatternFinder extends Thread {
     private Date start;
     private Date end;
 
+
+
     public PatternFinder(Date start, Date end) {
         this.start = start;
         this.end = end;
         this.start();
     }
 
+
+
     public void run() {
         // получаем лист истории
-        ArrayList<String> history = new ArrayList<>();
+        ArrayList<String> history = new ArrayList<>(Gasket.getReadHistoryClass().getHistoryList());
         // получаем список свечей имеющих уровни
         ArrayList<String> candlesStrings = removeEmptyCandles(getAllCandlesPattern(history));
         // получаем уже список непосредственно уровней уровней
-        ArrayList<String> levels = getLevels(candlesStrings);
-
-
-
-
+        Gasket.getWritePatternsClass().setPatternList(getLevels(candlesStrings));
         candlesStrings.clear();
         history.clear();
-        levels.clear();
     }
+
+
+
 
     // получить все свечи паттерна
     private ArrayList<String> getAllCandlesPattern(ArrayList<String> in) {
@@ -50,22 +50,24 @@ public class PatternFinder extends Thread {
                     result.add(s);
                 }
             } catch (Exception e) {
-                ConsoleHelper.writeMessage(StringHelper.getString(Enums.WRONG_DATE_FORMAT_IN_THE_HISTORY_FILE));
+                ConsoleHelper.writeMessage(StringHelper.getString(Outs.WRONG_DATE_FORMAT_IN_THE_HISTORY_FILE));
                 Gasket.getViewThreadClass().setPreviousColor();
             }
         }
         return result;
     }
 
+
     // удаляем строки с пустыми свечами
     private ArrayList<String> removeEmptyCandles(ArrayList<String> in) {
         for (int i = in.size() - 1; i >= 0; i--) {
-            if (!in.contains(Enums.levels.toString())) {
+            if (!in.contains(Str.levels.toString())) {
                 in.remove(i);
             }
         }
         return in;
     }
+
 
     // распарсиваем и получаем массив уровней
     private ArrayList<String> getLevels(ArrayList<String> in) {

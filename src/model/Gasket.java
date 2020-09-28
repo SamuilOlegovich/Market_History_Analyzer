@@ -12,6 +12,7 @@ public class Gasket {
     private static FilesAndPathCreator filesAndPathCreatorClass;
     private static ExecutorCommandos executorCommandosClass;
     private static RunAndStopProgram runAndStopProgramClass;
+    private static WritePatterns writePatternsClass;
     private static ReadHistory readHistoryClass;
     private static View viewThreadClass;
 
@@ -28,6 +29,14 @@ public class Gasket {
 
     public static String getSettingNow() {
         return SETTING_NOW;
+    }
+
+    public static WritePatterns getWritePatternsClass() {
+        return writePatternsClass;
+    }
+
+    public static void setWritePatternsClass(WritePatterns writePatternsClass) {
+        Gasket.writePatternsClass = writePatternsClass;
     }
 
     public static ReadHistory getReadHistoryClass() {
