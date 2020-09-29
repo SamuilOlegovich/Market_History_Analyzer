@@ -3,5 +3,11 @@ package model;
 public enum Str {
     END,
     NEXT,
-    levels;
+    levels,
+    period,
+    preview,
+    price,
+    value,
+    type,
+    avg;
 }

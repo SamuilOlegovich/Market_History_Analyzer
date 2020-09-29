@@ -31,10 +31,10 @@ public class PatternFinder extends Thread {
         // получаем список свечей имеющих уровни
         ArrayList<String> candlesStrings = removeEmptyCandles(getAllCandlesPattern(history));
         // получаем уже список непосредственно уровней уровней
-        Gasket.getWritePatternsClass().setPatternList(getLevels(candlesStrings));
+        Gasket.getWritePatternsClass().setPatternList(removeExtraLevels(getLevels(candlesStrings)));
         candlesStrings.clear();
         history.clear();
-        new Analyzer();
+        new HistoryIterator();
     }
 
 
@@ -86,6 +86,20 @@ public class PatternFinder extends Thread {
             }
         }
         return levels;
+    }
+
+
+    // удаляем лишние уровни
+    private ArrayList<String> removeExtraLevels(ArrayList<String> in) {
+        ArrayList<String> accountingLevelsList = Gasket.getLevelAccountingClass().getAccountingLevelsList();
+        for (int i = in.size() - 1; i >= 0; i--) {
+            boolean flag = false;
+            for (String s : accountingLevelsList) {
+                if (s.equalsIgnoreCase(StringHelper.getStringData(Str.type, in.get(i)))) flag = true;
+            }
+            if (!flag) in.remove(i);
+        }
+        return in;
     }
 
 

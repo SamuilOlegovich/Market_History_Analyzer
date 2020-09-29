@@ -13,6 +13,7 @@ public class Gasket {
     private static PatternStatistics patternStatisticsClass;
     private static ExecutorCommandos executorCommandosClass;
     private static RunAndStopProgram runAndStopProgramClass;
+    private static LevelAccounting levelAccountingClass;
     private static WritePatterns writePatternsClass;
     private static ReadHistory readHistoryClass;
     private static View viewThreadClass;
@@ -20,6 +21,7 @@ public class Gasket {
 
     // Settings
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
+    private static String symbol = "BTCUSD";
     private static int dateDifference = 0;
 
 
@@ -33,6 +35,22 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static String getSymbol() {
+        return symbol;
+    }
+
+    public static void setSymbol(String symbol) {
+        Gasket.symbol = symbol;
+    }
+
+    public static LevelAccounting getLevelAccountingClass() {
+        return levelAccountingClass;
+    }
+
+    public static void setLevelAccountingClass(LevelAccounting levelAccountingClass) {
+        Gasket.levelAccountingClass = levelAccountingClass;
+    }
 
     public static int getNumberFutureCandles() {
         return numberFutureCandles;
