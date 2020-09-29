@@ -34,6 +34,7 @@ public class PatternFinder extends Thread {
         Gasket.getWritePatternsClass().setPatternList(getLevels(candlesStrings));
         candlesStrings.clear();
         history.clear();
+        new Analyzer();
     }
 
 

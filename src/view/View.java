@@ -158,7 +158,7 @@ public class View extends Thread {
 
         jFrame.setSize(1110, 635);
         jFrame.setLocation(dimension.width/2 - 570, dimension.height/2 - 325);
-        jFrame.setTitle("ANALYZER - POWER by SAMUIL_OLEGOVICH");
+        jFrame.setTitle("MARKET HISTORY ANALYZER - POWER by SAMUIL_OLEGOVICH");
 //        jFrame.setIconImage();
         return jFrame;
     }

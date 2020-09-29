@@ -29,6 +29,7 @@ public class Main {
         FilesAndPathCreator filesAndPathCreator = new FilesAndPathCreator();
         ExecutorCommandos executorCommandos = new ExecutorCommandos();
         ReadAndWriteSetting readAndWriteSetting = new ReadAndWriteSetting(executorCommandos);
+        PatternStatistics patternStatistics = new PatternStatistics();
         WritePatterns writePatterns = new WritePatterns();
         ReadHistory readHistory = new ReadHistory();
 

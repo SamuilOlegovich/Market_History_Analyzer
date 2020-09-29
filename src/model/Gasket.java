@@ -10,6 +10,7 @@ import view.View;
 public class Gasket {
     // Class
     private static FilesAndPathCreator filesAndPathCreatorClass;
+    private static PatternStatistics patternStatisticsClass;
     private static ExecutorCommandos executorCommandosClass;
     private static RunAndStopProgram runAndStopProgramClass;
     private static WritePatterns writePatternsClass;
@@ -18,6 +19,7 @@ public class Gasket {
 
 
     // Settings
+    private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
     private static int dateDifference = 0;
 
 
@@ -29,6 +31,23 @@ public class Gasket {
 
     public static String getSettingNow() {
         return SETTING_NOW;
+    }
+
+
+    public static int getNumberFutureCandles() {
+        return numberFutureCandles;
+    }
+
+    public static void setNumberFutureCandles(int numberFutureCandles) {
+        Gasket.numberFutureCandles = numberFutureCandles;
+    }
+
+    public static PatternStatistics getPatternStatisticsClass() {
+        return patternStatisticsClass;
+    }
+
+    public static void setPatternStatisticsClass(PatternStatistics patternStatisticsClass) {
+        Gasket.patternStatisticsClass = patternStatisticsClass;
     }
 
     public static WritePatterns getWritePatternsClass() {
