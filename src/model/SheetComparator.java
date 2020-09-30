@@ -24,7 +24,10 @@ public class SheetComparator extends Thread {
     public void run() {
         // проверить наличие всех уровней на месте ли
         if (checkAvailabilityOfAllLevels()) {
+            // проверяем правильно ли по высоте находятся главные уровни
+            if (isTheHeightOfTheMainLevelsCorrect()) {
 
+            }
         }
         historyPatternList.clear();
         patternList.clear();
@@ -52,4 +55,42 @@ public class SheetComparator extends Thread {
         }
         return true;
     }
+
+
+
+    // проверяем правильно ли по высоте находятся главные уровни
+    private boolean isTheHeightOfTheMainLevelsCorrect() {
+        ArrayList<String> mainLevels = new ArrayList<>(Gasket.getLevelAccountingClass().getMainLevelsList());
+        ArrayList<String> historyPatternLong = new ArrayList<>(historyPatternList);
+        ArrayList<String> patternLong = new ArrayList<>(patternList);
+        ArrayList<String> historyPatternShort = new ArrayList<>();
+        ArrayList<String> patternShort = new ArrayList<>();
+
+        historyPatternLong.sort();
+        patternLong.sort();
+
+        for (String s : historyPatternLong) {
+            String string = StringHelper.getStringData(Str.type, s);
+            for (String ss : mainLevels) {
+                if (ss.equalsIgnoreCase(string)) {
+                    historyPatternShort.add(string);
+                    break;
+                }
+            }
+        }
+        for (String s : patternLong) {
+            String string = StringHelper.getStringData(Str.type, s);
+            for (String ss : mainLevels) {
+                if (ss.equalsIgnoreCase(string)) {
+                    patternShort.add(string);
+                    break;
+                }
+            }
+        }
+        for (int a = 0; a < historyPatternShort.size(); a++) {
+            if (!historyPatternShort.get(a).equals(patternShort.get(a))) return false;
+        }
+        return true;
+    }
+
 }
