@@ -1,7 +1,6 @@
 package model;
 
 import view.ConsoleHelper;
-import view.StringHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,29 +11,36 @@ import java.util.Date;
 
 // искатель паттернов
 public class PatternFinder extends Thread {
-    private Date start;
-    private Date end;
+    private long start;
+    private long end;
 
 
 
     public PatternFinder(Date start, Date end) {
-        this.start = start;
-        this.end = end;
+        this.start = start.getTime();
+        this.end = end.getTime();
         this.start();
     }
 
 
 
+    @Override
     public void run() {
         // получаем лист истории
-        ArrayList<String> history = new ArrayList<>(Gasket.getReadHistoryClass().getHistoryList());
+        ArrayList<String> history = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
+        ConsoleHelper.writeMessage("1");
         // получаем список свечей имеющих уровни
         ArrayList<String> candlesStrings = removeEmptyCandles(getAllCandlesPattern(history));
-        // получаем уже список непосредственно уровней уровней
+        ConsoleHelper.writeMessage("2");
+        // получаем уже список непосредственно уровней
         Gasket.getWritePatternsClass().setPatternList(removeExtraLevels(getLevels(candlesStrings)));
+        ConsoleHelper.writeMessage("3");
         candlesStrings.clear();
+        ConsoleHelper.writeMessage("4");
         history.clear();
-        new HistoryIterator();
+        ConsoleHelper.writeMessage("5");
+        if (Gasket.getWritePatternsClass().getPatternSize() != 0) new HistoryIterator();
+        ConsoleHelper.writeMessage("6");
     }
 
 
@@ -47,7 +53,8 @@ public class PatternFinder extends Thread {
         for (String s : in) {
             try {
                 long dateThisCandle = getDate(s);
-                if (start.getTime() <= dateThisCandle && end.getTime() >= dateThisCandle) {
+//                if (start.getTime() <= dateThisCandle && end.getTime() >= dateThisCandle) {
+                if (start <= dateThisCandle && end >= dateThisCandle) {
                     result.add(s);
                 }
             } catch (Exception e) {
@@ -62,9 +69,7 @@ public class PatternFinder extends Thread {
     // удаляем строки с пустыми свечами
     private ArrayList<String> removeEmptyCandles(ArrayList<String> in) {
         for (int i = in.size() - 1; i >= 0; i--) {
-            if (!in.contains(Str.levels.toString())) {
-                in.remove(i);
-            }
+            if (in.get(i).contains("[]}")) { in.remove(i); }
         }
         return in;
     }
@@ -74,17 +79,31 @@ public class PatternFinder extends Thread {
     private ArrayList<String> getLevels(ArrayList<String> in) {
         ArrayList<String> levels = new ArrayList<>();
         for (String s : in) {
-            String[] str = s.replaceAll("\\{", "")
-                    .replaceAll("}", "")
-                    .split(",\"levels\": ");
+            String[] str = s.contains(",\"levels\": \"")
+                    ? s.split(",\"levels\": ")
+                    : s.split(",\"levels\":");
 
-            String[] strings = str[1].split("],\\[");
+            String[] strings = str[1].split("},\\{");
 
             for (String ss : strings) {
-                levels.add(ss.replaceAll("\\[\\[", "")
-                        .replaceAll("]]", ""));
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(ss.replaceAll("\\{", "")
+                        .replaceAll("}", "")
+                        .replaceAll("\\[", "")
+                        .replaceAll("]", ""));
+                if (stringBuilder.substring(0, 1).toString().equals(" ")) {
+                    stringBuilder.delete(0, 1);
+                }
+                levels.add(stringBuilder.toString());
             }
         }
+        /////////////
+        StringBuilder stringBuilder = new StringBuilder("size levels => " + levels.size() + "\n");
+        for (String sss : levels) {
+            stringBuilder.append(sss).append("\n");
+        }
+        ConsoleHelper.writeMessage(stringBuilder.toString());
+        ////////////
         return levels;
     }
 
@@ -92,6 +111,10 @@ public class PatternFinder extends Thread {
     // удаляем лишние уровни
     private ArrayList<String> removeExtraLevels(ArrayList<String> in) {
         ArrayList<String> accountingLevelsList = Gasket.getLevelAccountingClass().getAccountingLevelsList();
+        //////////////
+        ConsoleHelper.writeMessage("in in => " + in.size());
+        //////////////
+
         for (int i = in.size() - 1; i >= 0; i--) {
             boolean flag = false;
             for (String s : accountingLevelsList) {
@@ -99,15 +122,36 @@ public class PatternFinder extends Thread {
             }
             if (!flag) in.remove(i);
         }
-        return in;
+
+        //////////////
+        ConsoleHelper.writeMessage("accountingLevelsList => " + accountingLevelsList.size());
+        ConsoleHelper.writeMessage("in out => " + in.size());
+        /////////////
+
+        return new ArrayList<>(in);
     }
 
 
     private long getDate(String in) throws Exception {
-        String[] strings = in.split("\",\"");
-        String result = in.replaceAll("\\{\"candle\": \\[\"time\": \"", "");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return simpleDateFormat.parse(result).getTime();
+//        String[] strings = in.split("\",\"");
+//        String result = in.replaceAll("\\{\"candle\": \\[\"time\": \"", "");
+        String[] strings = in.split(Str.levels.toString());
+
+        ////////////
+        ConsoleHelper.writeMessage("strings[0] => " + strings[0]);
+        ///////////
+
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        ////////////
+        ConsoleHelper.writeMessage("strings[0] => " + StringHelper.getStringData(Str.time, strings[0]));
+        ///////////
+        ////////////
+        ConsoleHelper.writeMessage("strings[0] => " + simpleDateFormat.parse(StringHelper.getStringData(Str.time, strings[0])).getTime());
+        ///////////
+
+
+        return simpleDateFormat.parse(StringHelper.getStringData(Str.time, strings[0])).getTime();
     }
 }
 

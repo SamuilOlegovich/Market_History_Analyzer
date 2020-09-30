@@ -1,10 +1,10 @@
 package controller;
 
-import model.DatesTimes;
+import model.TimesHelper;
 import model.Gasket;
 import model.ReadAndWriteSetting;
 import view.ConsoleHelper;
-import view.StringHelper;
+import model.StringHelper;
 
 
 public class ExecutorCommandos {
@@ -29,7 +29,7 @@ public class ExecutorCommandos {
             if (string.equalsIgnoreCase(Gasket.getSettingNow())) {
                 return;
             }
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal()
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()
                     + " --- Вы допустили ошибку, повторите ввод === " + string
                     + "\n"
             );
@@ -224,13 +224,13 @@ public class ExecutorCommandos {
                     if (strings[1].equalsIgnoreCase("RESTART")) readAndWriteSetting.writeSettings();
                     break;
                 default:
-                    ConsoleHelper.writeMessage(DatesTimes.getDateTerminal()
+                    ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()
                             + " --- Вы ввели неверную команду, попробуйте еще раз === " + string
                             + "\n"
                     );
             }
         } catch (Exception e) {
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal()
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()
                     + " --- Ошибочка, повторите ввод === " + string
                     + "\n"
             );

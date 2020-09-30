@@ -1,10 +1,7 @@
 package model;
 
 
-import view.StringHelper;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 
 // сравнивает лист патерна и лист паттерна найденого в истории
 public class SheetComparator extends Thread {

@@ -9,5 +9,6 @@ public enum Str {
     price,
     value,
     type,
+    time,
     avg;
 }

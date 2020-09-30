@@ -8,7 +8,7 @@ public class Analyzer extends Thread {
 
     public Analyzer() {
         this.patternList = new ArrayList<>(Gasket.getWritePatternsClass().getPatternList());
-        this.historyList = new ArrayList<>(Gasket.getReadHistoryClass().getHistoryList());
+        this.historyList = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
         this.start();
     }
 

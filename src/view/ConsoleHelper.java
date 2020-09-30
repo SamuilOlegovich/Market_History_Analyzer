@@ -3,7 +3,7 @@ package view;
 import model.Gasket;
 
 public class ConsoleHelper {
-    public static void writeMessage(String string) {
+    public static synchronized void writeMessage(String string) {
         Gasket.getViewThreadClass().updateInfoView(string);
 //        WriterAndReadFile.writerFile(string + "\n"
 //                , Gasket.getFilesAndPathCreator().getPathLogs()
@@ -12,7 +12,7 @@ public class ConsoleHelper {
     }
 
 
-    public static String getStringInfoSettings() {
+    public static synchronized String getStringInfoSettings() {
         return  Gasket.getSettingNow()
                 + "\n"
                 + "\n"
@@ -113,7 +113,7 @@ public class ConsoleHelper {
 
 
 
-    public static void printInfoSettings() {
+    public static synchronized void printInfoSettings() {
         ConsoleHelper.writeMessage("\n\n"
                 + getStringInfoSettings()
                 + "\n"

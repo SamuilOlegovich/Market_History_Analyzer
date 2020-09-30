@@ -6,8 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DatesTimes {
-    public static String getDateTerminal() {
+public class TimesHelper {
+    public static synchronized String getDateTerminal() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         dateFormat.format(date);
@@ -17,7 +17,7 @@ public class DatesTimes {
         return dateFormat.format(date);
     }
 
-    public static String getDateLogs() {
+    public static synchronized String getDateLogs() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         dateFormat.format(date);

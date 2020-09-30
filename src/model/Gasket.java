@@ -17,6 +17,7 @@ public class Gasket {
     private static WritePatterns writePatternsClass;
     private static ReadHistory readHistoryClass;
     private static View viewThreadClass;
+    private static History historyClass;
 
 
     // Levels
@@ -84,6 +85,14 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static History getHistoryClass() {
+        return historyClass;
+    }
+
+    public static void setHistoryClass(History historyClass) {
+        Gasket.historyClass = historyClass;
+    }
 
     public static String getStartDate() {
         return startDate;

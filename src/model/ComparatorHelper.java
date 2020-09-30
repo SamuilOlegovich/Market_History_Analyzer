@@ -1,7 +1,5 @@
 package model;
 
-import view.StringHelper;
-
 import java.util.Comparator;
 
 public class ComparatorHelper {

@@ -1,7 +1,6 @@
 package model;
 
 import view.ConsoleHelper;
-import view.StringHelper;
 import view.WriterAndReadFile;
 
 import java.util.ArrayList;
@@ -54,15 +53,23 @@ public class WritePatterns extends Thread {
         return strings;
     }
 
-    public void setPatternList(ArrayList<String> patternList) {
+    public void setPatternList(ArrayList<String> in) {
         if (patternList.size() > 0) {
             patternList.clear();
         }
-        ArrayList<String> strings = new ArrayList<>(patternList);
-        strings.add(0, Gasket.getStartDate()
+        patternList.add(Gasket.getStartDate()
                 + " => " + Gasket.getEndDate()
                 + " => " + Gasket.getSymbol());
-        this.patternList = strings;
+        patternList.addAll(in);
+
+        /////////////
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : patternList) {
+            stringBuilder.append(s).append("\n");
+        }
+        ConsoleHelper.writeMessage(stringBuilder.toString());
+        ConsoleHelper.writeMessage("patternList => " + patternList.size());
+        ////////////
     }
 
     public int getPatternSize() {

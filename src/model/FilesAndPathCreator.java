@@ -87,7 +87,7 @@ public class FilesAndPathCreator {
                     }
                 }
 
-                pathLogs = finish  + "Logs\\" + DatesTimes.getDateLogs().replaceAll(":", "-")
+                pathLogs = finish  + "Logs\\" + TimesHelper.getDateLogs().replaceAll(":", "-")
                         + " Log.txt";
                 pathSavedPatterns = finish + "Patterns\\SavedPatterns.txt";
                 pathSettings = finish + "Settings\\Settings.txt";
@@ -137,7 +137,7 @@ public class FilesAndPathCreator {
                     }
                 }
 
-                pathLogs = finish + "Logs/" + DatesTimes.getDateLogs() + " Log.txt";
+                pathLogs = finish + "Logs/" + TimesHelper.getDateLogs() + " Log.txt";
                 pathSavedPatterns = finish + "Patterns/SavedPatterns.txt";
                 pathHistory = finish + "History/History.txt";
                 pathSettings = finish + "Settings/Settings.txt";
@@ -147,7 +147,7 @@ public class FilesAndPathCreator {
                     .replaceAll("target/classes", "src/main/java")
                     .replaceAll("model/", "");
 
-            pathLogs = string + "Logs/Log/" + DatesTimes.getDateLogs() + "===Log.txt";
+            pathLogs = string + "Logs/Log/" + TimesHelper.getDateLogs() + "===Log.txt";
             pathSavedPatterns = string + "Logs/Patterns/SavedPatterns.txt";
             pathHistory = string + "Logs/History/History.txt";
             pathSettings = string + "Logs/Settings.txt";
@@ -168,10 +168,10 @@ public class FilesAndPathCreator {
 
 
     private void showPath() {
-        ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- " + pathSavedPatterns);
-        ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- " + pathSettings);
-        ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- " + pathHistory);
-        ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- " + pathLogs);
+        ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- " + pathSavedPatterns);
+        ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- " + pathSettings);
+        ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- " + pathHistory);
+        ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- " + pathLogs);
     }
 
 
@@ -188,10 +188,10 @@ public class FilesAndPathCreator {
         File file = new File(pathSavedPatterns);
         try {
             boolean newFile = file.createNewFile();
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Новый файл SavedPatterns успешно создан.");
         } catch (IOException ex) {
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Не удалось создать файл SavedPatterns.");
         }
     }
@@ -202,10 +202,10 @@ public class FilesAndPathCreator {
         File file = new File(pathSettings);
         try {
             boolean newFile = file.createNewFile();
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Новый файл Settings успешно создан.");
         } catch (IOException ex) {
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Не удалось Settings файл Настроек.");
         }
     }
@@ -215,10 +215,10 @@ public class FilesAndPathCreator {
         File file = new File(pathHistory);
         try {
             boolean newFile = file.createNewFile();
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Новый файл для History успешно создан.");
         } catch (IOException ex) {
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Не удалось создать файл History.");
         }
     }
@@ -229,10 +229,10 @@ public class FilesAndPathCreator {
         File file = new File(pathLogs);
         try {
             boolean newFile = file.createNewFile();
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Новый Лог файл успешно создан.");
         } catch (IOException ex) {
-            ConsoleHelper.writeMessage(DatesTimes.getDateTerminal() + " --- "
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
                     + "Не удалось создать Лог файл.");
         }
     }

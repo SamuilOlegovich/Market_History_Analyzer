@@ -30,6 +30,7 @@ public class Main {
         ExecutorCommandos executorCommandos = new ExecutorCommandos();
         ReadAndWriteSetting readAndWriteSetting = new ReadAndWriteSetting(executorCommandos);
         PatternStatistics patternStatistics = new PatternStatistics();
+        LevelAccounting levelAccounting = new LevelAccounting();
         WritePatterns writePatterns = new WritePatterns();
         ReadHistory readHistory = new ReadHistory();
 

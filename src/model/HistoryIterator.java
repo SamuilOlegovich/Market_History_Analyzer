@@ -1,15 +1,16 @@
 package model;
 
-import view.StringHelper;
-
 import java.util.ArrayList;
+
+
+
 
 public class HistoryIterator extends Thread {
     private ArrayList<String> historyList;
     private int patternSize;
 
     public HistoryIterator() {
-        this.historyList = new ArrayList<>(Gasket.getReadHistoryClass().getHistoryList());
+        this.historyList = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
         this.patternSize = Gasket.getWritePatternsClass().getPatternSize();
         this.start();
     }

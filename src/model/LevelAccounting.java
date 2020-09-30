@@ -11,11 +11,11 @@ public class LevelAccounting {
     private ArrayList<String> mainLevelsList; // главные уровни
 
     public LevelAccounting() {
-        Gasket.setLevelAccountingClass(this);
         this.accountingLevelsList = new ArrayList<>();
         this.mainLevelsList = new ArrayList<>();
         fillAccountingLevelsList();
         fillMainLevelsList();
+        Gasket.setLevelAccountingClass(this);
     }
 
 
@@ -157,136 +157,136 @@ public class LevelAccounting {
 
     private void fillMainLevelsList() {
         if (Gasket.getAsk() == 2) {
-            accountingLevelsList.add(Levels.Ask.toString());
+            mainLevelsList.add(Levels.Ask.toString());
         }
         if (Gasket.getAskHL() == 2) {
-            accountingLevelsList.add(Levels.AskHL.toString());
+            mainLevelsList.add(Levels.AskHL.toString());
         }
         if (Gasket.getAskHLSmall() == 2) {
-            accountingLevelsList.add(Levels.AskHLSmall.toString());
+            mainLevelsList.add(Levels.AskHLSmall.toString());
         }
         if (Gasket.getAskSmall() == 2) {
-            accountingLevelsList.add(Levels.AskSmall.toString());
+            mainLevelsList.add(Levels.AskSmall.toString());
         }
         if (Gasket.getBid() == 2) {
-            accountingLevelsList.add(Levels.Bid.toString());
+            mainLevelsList.add(Levels.Bid.toString());
         }
         if (Gasket.getBidHL() == 2) {
-            accountingLevelsList.add(Levels.BidHL.toString());
+            mainLevelsList.add(Levels.BidHL.toString());
         }
         if (Gasket.getBidHLSmall() == 2) {
-            accountingLevelsList.add(Levels.BidHLSmall.toString());
+            mainLevelsList.add(Levels.BidHLSmall.toString());
         }
         if (Gasket.getBidSmall() == 2) {
-            accountingLevelsList.add(Levels.BidSmall.toString());
+            mainLevelsList.add(Levels.BidSmall.toString());
         }
         if (Gasket.getDeltaAsk() == 2) {
-            accountingLevelsList.add(Levels.DeltaAsk.toString());
+            mainLevelsList.add(Levels.DeltaAsk.toString());
         }
         if (Gasket.getDeltaAskHL() == 2) {
-            accountingLevelsList.add(Levels.DeltaAskHL.toString());
+            mainLevelsList.add(Levels.DeltaAskHL.toString());
         }
         if (Gasket.getDeltaAskHLSmall() == 2) {
-            accountingLevelsList.add(Levels.DeltaAskHLSmall.toString());
+            mainLevelsList.add(Levels.DeltaAskHLSmall.toString());
         }
         if (Gasket.getDeltaAskSmall() == 2) {
-            accountingLevelsList.add(Levels.DeltaAskSmall.toString());
+            mainLevelsList.add(Levels.DeltaAskSmall.toString());
         }
         if (Gasket.getDeltaBid() == 2) {
-            accountingLevelsList.add(Levels.DeltaBid.toString());
+            mainLevelsList.add(Levels.DeltaBid.toString());
         }
         if (Gasket.getDeltaBidHL() == 2) {
-            accountingLevelsList.add(Levels.DeltaBidHL.toString());
+            mainLevelsList.add(Levels.DeltaBidHL.toString());
         }
         if (Gasket.getDeltaBidHLSmall() == 2) {
-            accountingLevelsList.add(Levels.DeltaBidHLSmall.toString());
+            mainLevelsList.add(Levels.DeltaBidHLSmall.toString());
         }
         if (Gasket.getDeltaBidSmall() == 2) {
-            accountingLevelsList.add(Levels.DeltaBidSmall.toString());
+            mainLevelsList.add(Levels.DeltaBidSmall.toString());
         }
         if (Gasket.getDeltaZSMinMinus() == 2) {
-            accountingLevelsList.add(Levels.DeltaZSMinMinus.toString());
+            mainLevelsList.add(Levels.DeltaZSMinMinus.toString());
         }
         if (Gasket.getDeltaZSMinPlus() == 2) {
-            accountingLevelsList.add(Levels.DeltaZSMinPlus.toString());
+            mainLevelsList.add(Levels.DeltaZSMinPlus.toString());
         }
         if (Gasket.getDeltaZSMinus() == 2) {
-            accountingLevelsList.add(Levels.DeltaZSMinus.toString());
+            mainLevelsList.add(Levels.DeltaZSMinus.toString());
         }
         if (Gasket.getDeltaZSPlus() == 2) {
-            accountingLevelsList.add(Levels.DeltaZSPlus.toString());
+            mainLevelsList.add(Levels.DeltaZSPlus.toString());
         }
         if (Gasket.getOIZSMinMinus() == 2) {
-            accountingLevelsList.add(Levels.OIZSMinMinus.toString());
+            mainLevelsList.add(Levels.OIZSMinMinus.toString());
         }
         if (Gasket.getOIZSMinPlus() == 2) {
-            accountingLevelsList.add(Levels.OIZSMinPlus.toString());
+            mainLevelsList.add(Levels.OIZSMinPlus.toString());
         }
         if (Gasket.getOIZSMinus() == 2) {
-            accountingLevelsList.add(Levels.OIZSMinus.toString());
+            mainLevelsList.add(Levels.OIZSMinus.toString());
         }
         if (Gasket.getOIZSPlus() == 2) {
-            accountingLevelsList.add(Levels.OIZSPlus.toString());
+            mainLevelsList.add(Levels.OIZSPlus.toString());
         }
         if (Gasket.getOpenPosAskMinus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosAskMinus.toString());
+            mainLevelsList.add(Levels.OpenPosAskMinus.toString());
         }
         if (Gasket.getOpenPosAskMinusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosAskMinusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosAskMinusSmall.toString());
         }
         if (Gasket.getOpenPosAskPlus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosAskPlus.toString());
+            mainLevelsList.add(Levels.OpenPosAskPlus.toString());
         }
         if (Gasket.getOpenPosAskPlusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosAskPlusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosAskPlusSmall.toString());
         }
         if (Gasket.getOpenPosBidMinus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosBidMinus.toString());
+            mainLevelsList.add(Levels.OpenPosBidMinus.toString());
         }
         if (Gasket.getOpenPosBidMinusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosBidMinusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosBidMinusSmall.toString());
         }
         if (Gasket.getOpenPosBidPlus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosBidPlus.toString());
+            mainLevelsList.add(Levels.OpenPosBidPlus.toString());
         }
         if (Gasket.getOpenPosBidPlusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosBidPlusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosBidPlusSmall.toString());
         }
         if (Gasket.getOpenPosMinus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosMinus.toString());
+            mainLevelsList.add(Levels.OpenPosMinus.toString());
         }
         if (Gasket.getOpenPosMinusHL() == 2) {
-            accountingLevelsList.add(Levels.OpenPosMinusHL.toString());
+            mainLevelsList.add(Levels.OpenPosMinusHL.toString());
         }
         if (Gasket.getOpenPosMinusHLSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosMinusHLSmall.toString());
+            mainLevelsList.add(Levels.OpenPosMinusHLSmall.toString());
         }
         if (Gasket.getOpenPosMinusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosMinusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosMinusSmall.toString());
         }
         if (Gasket.getOpenPosPlus() == 2) {
-            accountingLevelsList.add(Levels.OpenPosPlus.toString());
+            mainLevelsList.add(Levels.OpenPosPlus.toString());
         }
         if (Gasket.getOpenPosPlusHL() == 2) {
-            accountingLevelsList.add(Levels.OpenPosPlusHL.toString());
+            mainLevelsList.add(Levels.OpenPosPlusHL.toString());
         }
         if (Gasket.getOpenPosPlusHLSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosPlusHLSmall.toString());
+            mainLevelsList.add(Levels.OpenPosPlusHLSmall.toString());
         }
         if (Gasket.getOpenPosPlusSmall() == 2) {
-            accountingLevelsList.add(Levels.OpenPosPlusSmall.toString());
+            mainLevelsList.add(Levels.OpenPosPlusSmall.toString());
         }
         if (Gasket.getVolume() == 2) {
-            accountingLevelsList.add(Levels.Volume.toString());
+            mainLevelsList.add(Levels.Volume.toString());
         }
         if (Gasket.getVolumeHL() == 2) {
-            accountingLevelsList.add(Levels.VolumeHL.toString());
+            mainLevelsList.add(Levels.VolumeHL.toString());
         }
         if (Gasket.getVolumeHLSmall() == 2) {
-            accountingLevelsList.add(Levels.VolumeHLSmall.toString());
+            mainLevelsList.add(Levels.VolumeHLSmall.toString());
         }
         if (Gasket.getVolumeSmall() == 2) {
-            accountingLevelsList.add(Levels.VolumeSmall.toString());
+            mainLevelsList.add(Levels.VolumeSmall.toString());
         }
     }
 

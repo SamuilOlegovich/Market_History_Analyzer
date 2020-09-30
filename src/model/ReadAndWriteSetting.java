@@ -2,7 +2,6 @@ package model;
 
 import controller.ExecutorCommandos;
 import view.ConsoleHelper;
-import view.StringHelper;
 import view.WriterAndReadFile;
 
 import java.util.ArrayList;
