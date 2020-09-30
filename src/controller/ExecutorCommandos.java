@@ -123,19 +123,19 @@ public class ExecutorCommandos {
                     break;
                 case "OIZSMinMinus":
                     Gasket.setOIZSMinMinus(Integer.parseInt(strings[1]));
-                    ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinMinus === " + Gasket.getOIZSMinMinus()));
+                    ConsoleHelper.writeMessage(StringHelper.getString("OIZSMinMinus === " + Gasket.getOIZSMinMinus()));
                     break;
                 case "OIZSMinPlus":
                     Gasket.setOIZSMinPlus(Integer.parseInt(strings[1]));
-                    ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinPlus === " + Gasket.getOIZSMinPlus()));
+                    ConsoleHelper.writeMessage(StringHelper.getString("OIZSMinPlus === " + Gasket.getOIZSMinPlus()));
                     break;
                 case "OIZSMinus":
                     Gasket.setOIZSMinus(Integer.parseInt(strings[1]));
-                    ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinus === " + Gasket.getOIZSMinus()));
+                    ConsoleHelper.writeMessage(StringHelper.getString("OIZSMinus === " + Gasket.getOIZSMinus()));
                     break;
                 case "OIZSPlus":
                     Gasket.setOIZSPlus(Integer.parseInt(strings[1]));
-                    ConsoleHelper.writeMessage(StringHelper.getString("oIZSPlus === " + Gasket.getOIZSPlus()));
+                    ConsoleHelper.writeMessage(StringHelper.getString("OIZSPlus === " + Gasket.getOIZSPlus()));
                     break;
                 case "openPosAskMinus":
                     Gasket.setOpenPosAskMinus(Integer.parseInt(strings[1]));
