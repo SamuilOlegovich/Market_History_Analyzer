@@ -16,30 +16,94 @@ public class ConsoleHelper {
         return  Gasket.getSettingNow()
                 + "\n"
                 + "\n"
-//                + "whetherOrNotShowLearningProcess === " + Gasket.isWhetherOrNotShowLearningProcess()
-//                + " ----- выводить или нет выводить на экран процесс обучения НН\n"
-//                + "numberOfTrainingCycles === " + Gasket.getNumberOfTrainingCycles()
-//                + " ----- количество циклов обучения НН\n"
-//                + "numberOfOutputNeurons === " + Gasket.getNumberOfOutputNeurons()
-//                + " ----- количество выходных нейронов НН\n"
-//                + "numberOfInputNeurons === " + Gasket.getNumberOfInputNeurons()
-//                + " ----- количество входных нейронов\n"
-//                + "priceChangeToFormHistoryPattern === " + Gasket.getPriceChangeToFormHistoryPattern()
-//                + " ----- изменение цены для формирования паттерна истории\n"
-//                + "numberOfIndicatorsForOneCandle === " + Gasket.getNumberOfIndicatorsForOneCandle()
-//                + " ----- количество показателей по одной свече\n"
-//                + "numberOfCandlesToDetectMovement === " + Gasket.getNumberOfCandlesToDetectMovement()
-//                + " ----- количество свечек для определения движения buy, sell, flat\n"
-//                + "turnOnTurnOffLearning === " + Gasket.isTurnOnTurnOffLearning()
-//                + " ----- включить выключить процесс обучения\n"
-//                + "learningRate === " + Gasket.getLearningRate()
-//                + " ----- шаг обучения\n"
-//                + "minDigitWeightForSell === " + Gasket.getMinDigitWeightForSell()
-//                + " ----- минимальный порог для принятия решения по Селл\n"
-//                + "minDigitWeightForBuy === " + Gasket.getMinDigitWeightForBuy()
-//                + " ----- минимальный порог для принятия решения по Бай\n"
-//                + "predictNextCandle === " + Gasket.isPredictNextCandle()
-//                + " ----- предсказать следующую свечку\n"
+                + "ask === " + Gasket.getAsk()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "askHL === " + Gasket.getAskHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "askHLSmall === " + Gasket.getAskHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "askSmall === " + Gasket.getAskSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "bid === " + Gasket.getBid()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "bidHL === " + Gasket.getBidHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "bidHLSmall === " + Gasket.getBidHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "bidSmall === " + Gasket.getBidSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaAsk === " + Gasket.getDeltaAsk()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaAskHL === " + Gasket.getDeltaAskHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaAskHLSmall === " + Gasket.getDeltaAskHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaAskSmall === " + Gasket.getDeltaAskSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaBid === " + Gasket.getDeltaBid()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaBidHL === " + Gasket.getDeltaBidHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaBidHLSmall === " + Gasket.getDeltaBidHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaBidSmall === " + Gasket.getDeltaBidSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaZSMinMinus === " + Gasket.getDeltaZSMinMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaZSMinPlus === " + Gasket.getDeltaZSMinPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaZSMinus === " + Gasket.getDeltaZSMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "deltaZSPlus === " + Gasket.getDeltaZSPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "OIZSMinMinus === " + Gasket.getOIZSMinMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "OIZSMinPlus === " + Gasket.getOIZSMinPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "OIZSMinus === " + Gasket.getOIZSMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "OIZSPlus === " + Gasket.getOIZSPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosAskMinus === " + Gasket.getOpenPosAskMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosAskMinusSmall === " + Gasket.getOpenPosAskMinusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosAskPlus === " + Gasket.getOpenPosAskPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosAskPlusSmall === " + Gasket.getOpenPosAskPlusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosBidMinus === " + Gasket.getOpenPosBidMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosBidMinusSmall === " + Gasket.getOpenPosBidMinusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosBidPlus === " + Gasket.getOpenPosBidPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosBidPlusSmall === " + Gasket.getOpenPosBidPlusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosMinus === " + Gasket.getOpenPosMinus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosMinusHL === " + Gasket.getOpenPosMinusHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosMinusHLSmall === " + Gasket.getOpenPosMinusHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosMinusSmall === " + Gasket.getOpenPosMinusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosPlus === " + Gasket.getOpenPosPlus()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosPlusHL === " + Gasket.getOpenPosPlusHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosPlusHLSmall === " + Gasket.getOpenPosPlusHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "openPosPlusSmall === " + Gasket.getOpenPosPlusSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "volume === " + Gasket.getVolume()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "volumeHL === " + Gasket.getVolumeHL()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "volumeHLSmall === " + Gasket.getVolumeHLSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
+                + "volumeSmall === " + Gasket.getVolumeSmall()
+                + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
                 + "\n"
                 + "\n"
                 + "dateDifference === " + Gasket.getDateDifference()

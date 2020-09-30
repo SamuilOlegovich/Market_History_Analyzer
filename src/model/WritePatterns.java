@@ -59,7 +59,13 @@ public class WritePatterns extends Thread {
             patternList.clear();
         }
         ArrayList<String> strings = new ArrayList<>(patternList);
-        strings.add(0, DatesTimes.getDateLogs() + " - " + Gasket.getSymbol());
+        strings.add(0, Gasket.getStartDate()
+                + " => " + Gasket.getEndDate()
+                + " => " + Gasket.getSymbol());
         this.patternList = strings;
+    }
+
+    public int getPatternSize() {
+        return patternList.size() - 1;
     }
 }

@@ -122,6 +122,8 @@ public class View extends Thread {
 
                 String startDate = jTextFieldStartDate.getText();
                 String endDate = jTextFieldEndDate.getText();
+                Gasket.setStartDate(startDate);
+                Gasket.setEndDate(endDate);
                 new DataParser(startDate, endDate);
             }
         });
