@@ -32,6 +32,7 @@ public class ReadHistory {
         } catch (Exception e) {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.HISTORY_FILE_READING_ERROR));
         }
+            ConsoleHelper.writeMessage(historyList.get(0) + historyList.get(1) + historyList.get(2));
     }
 
 

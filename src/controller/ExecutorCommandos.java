@@ -121,19 +121,19 @@ public class ExecutorCommandos {
                     Gasket.setDeltaZSPlus(Integer.parseInt(strings[1]));
                     ConsoleHelper.writeMessage(StringHelper.getString("deltaZSPlus === " + Gasket.getDeltaZSPlus()));
                     break;
-                case "oIZSMinMinus":
+                case "OIZSMinMinus":
                     Gasket.setOIZSMinMinus(Integer.parseInt(strings[1]));
                     ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinMinus === " + Gasket.getOIZSMinMinus()));
                     break;
-                case "oIZSMinPlus":
+                case "OIZSMinPlus":
                     Gasket.setOIZSMinPlus(Integer.parseInt(strings[1]));
                     ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinPlus === " + Gasket.getOIZSMinPlus()));
                     break;
-                case "oIZSMinus":
+                case "OIZSMinus":
                     Gasket.setOIZSMinus(Integer.parseInt(strings[1]));
                     ConsoleHelper.writeMessage(StringHelper.getString("oIZSMinus === " + Gasket.getOIZSMinus()));
                     break;
-                case "oIZSPlus":
+                case "OIZSPlus":
                     Gasket.setOIZSPlus(Integer.parseInt(strings[1]));
                     ConsoleHelper.writeMessage(StringHelper.getString("oIZSPlus === " + Gasket.getOIZSPlus()));
                     break;

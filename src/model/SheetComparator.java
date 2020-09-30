@@ -66,8 +66,8 @@ public class SheetComparator extends Thread {
         ArrayList<String> historyPatternShort = new ArrayList<>();
         ArrayList<String> patternShort = new ArrayList<>();
 
-        historyPatternLong.sort();
-        patternLong.sort();
+        historyPatternLong.sort(ComparatorHelper.getSortPrice());
+        patternLong.sort(ComparatorHelper.getSortPrice());
 
         for (String s : historyPatternLong) {
             String string = StringHelper.getStringData(Str.type, s);
