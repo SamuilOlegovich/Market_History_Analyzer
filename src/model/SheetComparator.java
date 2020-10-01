@@ -25,12 +25,12 @@ public class SheetComparator extends Thread {
         if (checkAvailabilityOfAllLevels()) {
             // проверяем правильно ли по высоте находятся главные уровни
             if (isTheHeightOfTheMainLevelsCorrect()) {
-                ConsoleHelper.writeMessage(StringHelper.getString("Совпадение найдено"));
+                Gasket.getStatisticsClass().setNumberOfRepetitionsOfPattern();
+                new Analyzer(nextStepIndex);
             }
         }
         historyPatternList.clear();
         patternList.clear();
-        ConsoleHelper.writeMessage(StringHelper.getString("Совпадение найдено"));
     }
 
 

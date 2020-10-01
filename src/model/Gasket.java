@@ -16,6 +16,7 @@ public class Gasket {
     private static LevelAccounting levelAccountingClass;
     private static WritePatterns writePatternsClass;
     private static ReadHistory readHistoryClass;
+    private static Statistics statisticsClass;
     private static View viewThreadClass;
     private static History historyClass;
     private static Pattern patternClass;
@@ -70,6 +71,7 @@ public class Gasket {
 
     // Settings
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
+    private static boolean showPattern = true;      // показывать или нет паттерн
     private static String symbol = "BTCUSD";
     private static int dateDifference = 0;
 
@@ -86,6 +88,22 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static boolean isShowPattern() {
+        return showPattern;
+    }
+
+    public static void setShowPattern(boolean showPattern) {
+        Gasket.showPattern = showPattern;
+    }
+
+    public static Statistics getStatisticsClass() {
+        return statisticsClass;
+    }
+
+    public static void setStatisticsClass(Statistics statisticsClass) {
+        Gasket.statisticsClass = statisticsClass;
+    }
 
     public static Pattern getPatternClass() {
         return patternClass;

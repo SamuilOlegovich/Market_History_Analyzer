@@ -20,6 +20,10 @@ public class History {
         return historyList;
     }
 
+    public ArrayList<String> getHistoryList(int start, int stop) {
+        return new ArrayList<>(historyList.subList(start, stop));
+    }
+
 
     public ArrayList<String> getPartHistory(int start, int stop) {
         ArrayList<String> out = new ArrayList<>();

@@ -32,5 +32,10 @@ public enum Outs {
     NO_PATTERN_TO_SAVE,
     НЕТ_ПАТТЕРНА_ДЛЯ_СОХРАНЕНИЯ,
     PATTERN_SUCCESSFULLY_SAVED,
-    ПАТТЕРН_УСПЕШНО_СОХРАНЕН;
+    ПАТТЕРН_УСПЕШНО_СОХРАНЕН,
+    NO_MATCHES_FOUND,
+    СОВПАДЕНИЙ_НЕ_НАЙДЕНО,
+    MATCHES_FOUND,
+    НАЙДЕНО_СОВПАДЕНИЙ
+    ;
 }

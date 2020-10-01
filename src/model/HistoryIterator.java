@@ -9,17 +9,24 @@ public class HistoryIterator extends Thread {
     private ArrayList<String> historyList;
     private int patternSize;
 
+
+
     public HistoryIterator() {
         this.historyList = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
         this.patternSize = Gasket.getPatternClass().getPatternSize();
         this.start();
     }
 
+
+
     @Override
     public void run() {
         iterateOverHistory();
         historyList.clear();
+        Gasket.getViewThreadClass().setPreviousColor();
     }
+
+
 
     private void iterateOverHistory() {
         for (int a = 0; a < (historyList.size() - 1) - Gasket.getNumberFutureCandles() ; a++) {
