@@ -73,6 +73,8 @@ public class Gasket {
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
     private static boolean showPattern = true;      // показывать или нет паттерн
     private static String symbol = "BTCUSD";
+    private static double takeProfit = 15.0;
+    private static double stopLoss = 15.0;
     private static int dateDifference = 0;
 
 
@@ -88,6 +90,22 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static double getTakeProfit() {
+        return takeProfit;
+    }
+
+    public static void setTakeProfit(double takeProfit) {
+        Gasket.takeProfit = takeProfit;
+    }
+
+    public static double getStopLoss() {
+        return stopLoss;
+    }
+
+    public static void setStopLoss(double stopLoss) {
+        Gasket.stopLoss = stopLoss;
+    }
 
     public static boolean isShowPattern() {
         return showPattern;

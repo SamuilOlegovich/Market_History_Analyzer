@@ -8,7 +8,10 @@ public enum Str {
     preview,
     price,
     value,
+    open,
     type,
     time,
+    high,
+    low,
     avg;
 }
