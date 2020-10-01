@@ -6,10 +6,12 @@ public class Pattern {
     private ArrayList<String> patternList;
 
 
-
     public Pattern() {
         this.patternList = new ArrayList<>();
+        Gasket.setPatternClass(this);
     }
+
+
 
     public ArrayList<String> getPatternList() {
         ArrayList<String> strings = new ArrayList<>(patternList);

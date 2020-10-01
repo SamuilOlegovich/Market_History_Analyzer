@@ -36,7 +36,7 @@ public class DataParser extends Thread {
         String result = string.replaceAll(":", "_").replaceAll("-", "_")
                 .replaceAll("\\.", "_").replaceAll(",", "_")
                 .replaceAll(" ", "_");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH_mm_dd_MM_yyyy");
         return simpleDateFormat.parse(result);
     }
 }

@@ -1,6 +1,8 @@
 package model;
 
 
+import view.ConsoleHelper;
+
 import java.util.ArrayList;
 
 // сравнивает лист патерна и лист паттерна найденого в истории
@@ -23,11 +25,12 @@ public class SheetComparator extends Thread {
         if (checkAvailabilityOfAllLevels()) {
             // проверяем правильно ли по высоте находятся главные уровни
             if (isTheHeightOfTheMainLevelsCorrect()) {
-
+                ConsoleHelper.writeMessage(StringHelper.getString("Совпадение найдено"));
             }
         }
         historyPatternList.clear();
         patternList.clear();
+        ConsoleHelper.writeMessage(StringHelper.getString("Совпадение найдено"));
     }
 
 
