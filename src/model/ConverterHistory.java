@@ -60,8 +60,5 @@ public class ConverterHistory extends Thread {
                 stringBuilder.delete(0, stringBuilder.length());
             }
         }
-//        for (int i = 0; i < 30; i ++) {
-//            ConsoleHelper.writeMessage(history.get(i));
-//        }
     }
 }

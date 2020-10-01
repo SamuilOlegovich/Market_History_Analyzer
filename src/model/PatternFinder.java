@@ -53,7 +53,6 @@ public class PatternFinder extends Thread {
         for (String s : in) {
             try {
                 long dateThisCandle = getDate(s);
-//                if (start.getTime() <= dateThisCandle && end.getTime() >= dateThisCandle) {
                 if (start <= dateThisCandle && end >= dateThisCandle) {
                     result.add(s);
                 }
@@ -97,13 +96,6 @@ public class PatternFinder extends Thread {
                 levels.add(stringBuilder.toString());
             }
         }
-        /////////////
-        StringBuilder stringBuilder = new StringBuilder("size levels => " + levels.size() + "\n");
-        for (String sss : levels) {
-            stringBuilder.append(sss).append("\n");
-        }
-        ConsoleHelper.writeMessage(stringBuilder.toString());
-        ////////////
         return levels;
     }
 
@@ -111,9 +103,6 @@ public class PatternFinder extends Thread {
     // удаляем лишние уровни
     private ArrayList<String> removeExtraLevels(ArrayList<String> in) {
         ArrayList<String> accountingLevelsList = Gasket.getLevelAccountingClass().getAccountingLevelsList();
-        //////////////
-        ConsoleHelper.writeMessage("in in => " + in.size());
-        //////////////
 
         for (int i = in.size() - 1; i >= 0; i--) {
             boolean flag = false;
@@ -122,35 +111,13 @@ public class PatternFinder extends Thread {
             }
             if (!flag) in.remove(i);
         }
-
-        //////////////
-        ConsoleHelper.writeMessage("accountingLevelsList => " + accountingLevelsList.size());
-        ConsoleHelper.writeMessage("in out => " + in.size());
-        /////////////
-
         return new ArrayList<>(in);
     }
 
 
     private long getDate(String in) throws Exception {
-//        String[] strings = in.split("\",\"");
-//        String result = in.replaceAll("\\{\"candle\": \\[\"time\": \"", "");
         String[] strings = in.split(Str.levels.toString());
-
-        ////////////
-        ConsoleHelper.writeMessage("strings[0] => " + strings[0]);
-        ///////////
-
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        ////////////
-        ConsoleHelper.writeMessage("strings[0] => " + StringHelper.getStringData(Str.time, strings[0]));
-        ///////////
-        ////////////
-        ConsoleHelper.writeMessage("strings[0] => " + simpleDateFormat.parse(StringHelper.getStringData(Str.time, strings[0])).getTime());
-        ///////////
-
-
         return simpleDateFormat.parse(StringHelper.getStringData(Str.time, strings[0])).getTime();
     }
 }

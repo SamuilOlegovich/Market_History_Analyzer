@@ -17,9 +17,6 @@ public class History {
 
 
     public ArrayList<String> getHistoryList() {
-        /////////////
-        ConsoleHelper.writeMessage("historyList => " + historyList.size());
-        /////////////
         return historyList;
     }
 

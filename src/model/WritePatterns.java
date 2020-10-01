@@ -62,15 +62,6 @@ public class WritePatterns extends Thread {
                 + " => " + Gasket.getStartDate()
                 + " => " + Gasket.getEndDate());
         patternList.addAll(in);
-
-        /////////////
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String s : patternList) {
-            stringBuilder.append(s).append("\n");
-        }
-        ConsoleHelper.writeMessage(stringBuilder.toString());
-        ConsoleHelper.writeMessage("patternList => " + patternList.size());
-        ////////////
     }
 
     public int getPatternSize() {
