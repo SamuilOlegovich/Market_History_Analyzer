@@ -23,4 +23,11 @@ public class TimesHelper {
         dateFormat.format(date);
         return dateFormat.format(date);
     }
+
+    public static String getDataStringFormat(Date in) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH_mm_dd_MM_yyyy");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(yyyy_MM_dd_HH_mm_ss");
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dd_MM_yyyy_HH_mm_ss");
+        return simpleDateFormat.format(in);
+    }
 }

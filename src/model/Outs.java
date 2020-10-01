@@ -30,5 +30,7 @@ public enum Outs {
     SETTINGS_SUCCESSFULLY_READ,
     НАСТРОЙКИ_УСПЕШНО_СЧИТАНЫ,
     NO_PATTERN_TO_SAVE,
-    НЕТ_ПАТТЕРНА_ДЛЯ_СОХРАНЕНИЯ;
+    НЕТ_ПАТТЕРНА_ДЛЯ_СОХРАНЕНИЯ,
+    PATTERN_SUCCESSFULLY_SAVED,
+    ПАТТЕРН_УСПЕШНО_СОХРАНЕН;
 }

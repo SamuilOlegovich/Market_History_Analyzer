@@ -31,6 +31,7 @@ public class WritePatterns extends Thread {
         } else {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.NO_PATTERN_TO_SAVE));
         }
+        ConsoleHelper.writeMessage(StringHelper.getString(Outs.PATTERN_SUCCESSFULLY_SAVED));
         Gasket.getViewThreadClass().setPreviousColor();
     }
 
@@ -57,9 +58,9 @@ public class WritePatterns extends Thread {
         if (patternList.size() > 0) {
             patternList.clear();
         }
-        patternList.add(Gasket.getStartDate()
-                + " => " + Gasket.getEndDate()
-                + " => " + Gasket.getSymbol());
+        patternList.add(Gasket.getSymbol()
+                + " => " + Gasket.getStartDate()
+                + " => " + Gasket.getEndDate());
         patternList.addAll(in);
 
         /////////////

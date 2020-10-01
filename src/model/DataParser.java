@@ -23,6 +23,8 @@ public class DataParser extends Thread {
         try {
             Date start = getDate(startDate);
             Date end = getDate(endDate);
+            Gasket.setStartDate(TimesHelper.getDataStringFormat(start));
+            Gasket.setEndDate(TimesHelper.getDataStringFormat(end));
             new PatternFinder(start, end);
         } catch (Exception e) {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.WRONG_DATE_FORMAT));
