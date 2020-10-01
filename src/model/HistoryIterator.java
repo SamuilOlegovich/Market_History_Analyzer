@@ -11,7 +11,7 @@ public class HistoryIterator extends Thread {
 
     public HistoryIterator() {
         this.historyList = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
-        this.patternSize = Gasket.getWritePatternsClass().getPatternSize();
+        this.patternSize = Gasket.getPatternClass().getPatternSize();
         this.start();
     }
 

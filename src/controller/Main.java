@@ -33,6 +33,7 @@ public class Main {
         LevelAccounting levelAccounting = new LevelAccounting();
         WritePatterns writePatterns = new WritePatterns();
         ReadHistory readHistory = new ReadHistory();
+        Pattern pattern = new Pattern();
 
 
 

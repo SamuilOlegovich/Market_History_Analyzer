@@ -18,6 +18,7 @@ public class Gasket {
     private static ReadHistory readHistoryClass;
     private static View viewThreadClass;
     private static History historyClass;
+    private static Pattern patternClass;
 
 
     // Levels
@@ -85,6 +86,14 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static Pattern getPatternClass() {
+        return patternClass;
+    }
+
+    public static void setPatternClass(Pattern patternClass) {
+        Gasket.patternClass = patternClass;
+    }
 
     public static History getHistoryClass() {
         return historyClass;

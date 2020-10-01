@@ -11,7 +11,7 @@ public class SheetComparator extends Thread {
 
 
     public SheetComparator(ArrayList<String> historyPatternList, int nextStepIndex) {
-        this.patternList = new ArrayList<>(Gasket.getWritePatternsClass().getPatternList());
+        this.patternList = new ArrayList<>(Gasket.getPatternClass().getPatternList());
         this.historyPatternList = new ArrayList<>(historyPatternList);
         this.nextStepIndex = nextStepIndex;
         start();

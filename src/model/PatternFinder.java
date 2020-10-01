@@ -28,19 +28,13 @@ public class PatternFinder extends Thread {
     public void run() {
         // получаем лист истории
         ArrayList<String> history = new ArrayList<>(Gasket.getHistoryClass().getHistoryList());
-        ConsoleHelper.writeMessage("1");
         // получаем список свечей имеющих уровни
         ArrayList<String> candlesStrings = removeEmptyCandles(getAllCandlesPattern(history));
-        ConsoleHelper.writeMessage("2");
         // получаем уже список непосредственно уровней
-        Gasket.getWritePatternsClass().setPatternList(removeExtraLevels(getLevels(candlesStrings)));
-        ConsoleHelper.writeMessage("3");
+        Gasket.getPatternClass().setPatternList(removeExtraLevels(getLevels(candlesStrings)));
         candlesStrings.clear();
-        ConsoleHelper.writeMessage("4");
         history.clear();
-        ConsoleHelper.writeMessage("5");
-        if (Gasket.getWritePatternsClass().getPatternSize() != 0) new HistoryIterator();
-        ConsoleHelper.writeMessage("6");
+        if (Gasket.getPatternClass().getPatternSize() != 0) new HistoryIterator();
     }
 
 
