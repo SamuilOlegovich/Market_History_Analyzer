@@ -69,6 +69,16 @@ public class Gasket {
     private static int volumeSmall = 0;
 
 
+    // TimeFrame
+    private static int m1;
+    private static int m5;
+    private static int m15;
+    private static int m30;
+    private static int h1;
+    private static int h4;
+
+
+
     // Settings
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
     private static boolean showPattern = true;      // показывать или нет паттерн
@@ -90,6 +100,54 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static int getM1() {
+        return m1;
+    }
+
+    public static void setM1(int m1) {
+        Gasket.m1 = m1;
+    }
+
+    public static int getM5() {
+        return m5;
+    }
+
+    public static void setM5(int m5) {
+        Gasket.m5 = m5;
+    }
+
+    public static int getM15() {
+        return m15;
+    }
+
+    public static void setM15(int m15) {
+        Gasket.m15 = m15;
+    }
+
+    public static int getM30() {
+        return m30;
+    }
+
+    public static void setM30(int m30) {
+        Gasket.m30 = m30;
+    }
+
+    public static int getH1() {
+        return h1;
+    }
+
+    public static void setH1(int h1) {
+        Gasket.h1 = h1;
+    }
+
+    public static int getH4() {
+        return h4;
+    }
+
+    public static void setH4(int h4) {
+        Gasket.h4 = h4;
+    }
 
     public static double getTakeProfit() {
         return takeProfit;
