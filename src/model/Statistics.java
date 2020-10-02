@@ -2,6 +2,9 @@ package model;
 
 import view.ConsoleHelper;
 
+
+
+
 public class Statistics {
     private int numberOfRepetitionsOfPattern;   // количество повторений паттерна
     private double maxSell;
@@ -22,7 +25,6 @@ public class Statistics {
 
 
 
-
     public int getNumberOfRepetitionsOfPattern() {
         return numberOfRepetitionsOfPattern;
     }
@@ -39,8 +41,7 @@ public class Statistics {
         if (numberOfRepetitionsOfPattern == 0) {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.NO_MATCHES_FOUND));
         } else {
-            ConsoleHelper.writeMessage(StringHelper
-                    .getString(Outs.NO_MATCHES_FOUND.toString() + "  -->  " + numberOfRepetitionsOfPattern));
+            ConsoleHelper.writeMessage(getStatistics());
         }
     }
 
@@ -55,5 +56,13 @@ public class Statistics {
 
     public synchronized void buyPlus() {
         this.buy++;
+    }
+
+    private String getStatistics() {
+        return  "\n\n\n --- *** STATISTICS *** --- " +
+                "\nMax Sell  -->  " + maxSell + "\nMax Buy  -->  " + maxBuy +
+                "\nSell  -->  " + sell + "\nBuy  --> " + buy +
+                "\nNumber of repetitions  -->  " + numberOfRepetitionsOfPattern +
+                "\n\n";
     }
 }

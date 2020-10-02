@@ -52,6 +52,7 @@ public class HistoryIterator extends Thread {
             }
             new SheetComparator(intermediatePatternList, nextStepIndex);
         }
+        Gasket.getStatisticsClass().showStatistics();
     }
 
 
