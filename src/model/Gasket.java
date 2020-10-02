@@ -78,6 +78,10 @@ public class Gasket {
     private static int h4;
 
 
+    // DirCandle
+    private static int dirCandle;
+
+
 
     // Settings
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
@@ -100,6 +104,13 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+    public static int getDirCandle() {
+        return dirCandle;
+    }
+
+    public static void setDirCandle(int dirCandle) {
+        Gasket.dirCandle = dirCandle;
+    }
 
     public static int getM1() {
         return m1;
