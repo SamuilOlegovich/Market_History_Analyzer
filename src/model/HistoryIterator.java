@@ -31,6 +31,7 @@ public class HistoryIterator extends Thread {
     private void iterateOverHistory() {
         for (int a = 0; a < (historyList.size() - 1) - Gasket.getNumberFutureCandles() ; a++) {
             int nextStepIndex = 0;
+            int stopSteepIndex = 0;
             String stringA = historyList.get(a);
             ArrayList<String> intermediatePatternList = new ArrayList<>();
 
@@ -50,7 +51,11 @@ public class HistoryIterator extends Thread {
                 }
                 if (intermediatePatternList.size() == patternSize) break;
             }
-            new SheetComparator(intermediatePatternList, nextStepIndex);
+
+            if (nextStepIndex != stopSteepIndex) {
+                new SheetComparator(intermediatePatternList, nextStepIndex);
+                stopSteepIndex = nextStepIndex;
+            }
         }
         Gasket.getStatisticsClass().showStatistics();
     }
