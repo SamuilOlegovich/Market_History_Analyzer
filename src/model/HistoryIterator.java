@@ -29,9 +29,9 @@ public class HistoryIterator extends Thread {
 
 
     private void iterateOverHistory() {
+        int stopSteepIndex = 0;
         for (int a = 0; a < (historyList.size() - 1) - Gasket.getNumberFutureCandles() ; a++) {
             int nextStepIndex = 0;
-            int stopSteepIndex = 0;
             String stringA = historyList.get(a);
             ArrayList<String> intermediatePatternList = new ArrayList<>();
 
