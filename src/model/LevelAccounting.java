@@ -7,15 +7,40 @@ import java.util.ArrayList;
 // тут мы смотрим и составляем список какие уровни нам надо учитывать, а какие нет
 // а так же формируем главные уровни
 public class LevelAccounting {
-    private ArrayList<String> accountingLevelsList; // уровни которые учитывать
-    private ArrayList<String> mainLevelsList; // главные уровни
+    private ArrayList<String> accountingLevelsList;     // уровни которые учитывать
+    private ArrayList<String> mainLevelsList;           // главные уровни
+    private ArrayList<String> timeFrame;                // массив таймфреймов на которые надо обращать внимание
 
     public LevelAccounting() {
         this.accountingLevelsList = new ArrayList<>();
         this.mainLevelsList = new ArrayList<>();
+        this.timeFrame = new ArrayList<>();
         fillAccountingLevelsList();
         fillMainLevelsList();
         Gasket.setLevelAccountingClass(this);
+    }
+
+
+
+    private void fillTimeFrame() {
+        if (Gasket.getM1() == 1) {
+            timeFrame.add(TimeFrame.M1.toString());
+        }
+        if (Gasket.getM5() == 1) {
+            timeFrame.add(TimeFrame.M5.toString());
+        }
+        if (Gasket.getM15() == 1) {
+            timeFrame.add(TimeFrame.M15.toString());
+        }
+        if (Gasket.getM30() == 1) {
+            timeFrame.add(TimeFrame.M30.toString());
+        }
+        if (Gasket.getH1() == 1) {
+            timeFrame.add(TimeFrame.H1.toString());
+        }
+        if (Gasket.getH4() == 1) {
+            timeFrame.add(TimeFrame.H4.toString());
+        }
     }
 
 
