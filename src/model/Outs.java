@@ -36,6 +36,12 @@ public enum Outs {
     NO_MATCHES_FOUND,
     СОВПАДЕНИЙ_НЕ_НАЙДЕНО,
     MATCHES_FOUND,
-    НАЙДЕНО_СОВПАДЕНИЙ
+    НАЙДЕНО_СОВПАДЕНИЙ,
+    CONVERTING_HISTORY,
+    КОНВЕРТИРУЮ_ИСТОРИЮ,
+    SORTING_HISTORY,
+    СОРТИРУЮ_ИСТОРИЮ,
+    REMOVING_EXTRA_FROM_HISTORY,
+    УДАЛЯЮ_ЛИШНЕЕ_ИЗ_ИСТОРИЮ
     ;
 }

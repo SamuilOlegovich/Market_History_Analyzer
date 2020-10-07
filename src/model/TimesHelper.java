@@ -3,6 +3,7 @@ package model;
 import model.Gasket;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,5 +30,19 @@ public class TimesHelper {
     public static String getDataStringFormat(Date in) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH_mm_dd_MM_yyyy");
         return simpleDateFormat.format(in);
+    }
+
+
+    // 2020-05-21 15:30:00
+    public static synchronized Long getDateLong(String string) throws ParseException {
+        String s = string.replace(".", "-").replace(":", "-")
+                .replace(" ", "-");
+        ////////////////////////////
+//        System.out.println(string);
+        ///////////////////////////
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        Date date = new Date();
+        dateFormat.parse(s);
+        return date.getTime();
     }
 }
