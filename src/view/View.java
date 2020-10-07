@@ -99,7 +99,7 @@ public class View extends Thread {
                     } else if (string.trim().equalsIgnoreCase("commands")) {
 //                        ConsoleHelper.showCommands();
                     } else {
-//                        Gasket.getExecutorCommandos().parseAndExecute(string.replaceAll("=", " === "));
+                        Gasket.getExecutorCommandosClass().parseAndExecute(string.replaceAll("=", " === "));
                     }
                 }
             }
@@ -116,7 +116,6 @@ public class View extends Thread {
                     public void run() {
                         color = jPanel.getBackground();
                         jPanel.setBackground(Color.PINK);
-                        setPreviousColor();
                     }
                 }.start();
 
@@ -137,7 +136,6 @@ public class View extends Thread {
                     public void run() {
                         color = jPanel.getBackground();
                         jPanel.setBackground(Color.BLUE);
-                        setPreviousColor();
                     }
                 }.start();
 

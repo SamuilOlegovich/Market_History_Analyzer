@@ -106,6 +106,28 @@ public class ConsoleHelper {
                 + " ----- 0 -> отключён, 1 -> включен, 2 -> включен и главный\n"
                 + "\n"
                 + "\n"
+                + "M1 === " + Gasket.getM1() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "M5 === " + Gasket.getM5() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "M15 === " + Gasket.getM15() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "M30 === " + Gasket.getM30() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "H1 === " + Gasket.getH1() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "H4 === " + Gasket.getH4() + " ----- 0 -> отключён, 1 -> включен\n"
+                + "\n"
+                + "\n"
+                + "numberFutureCandles === " + Gasket.getNumberFutureCandles()
+                + " ----- количество будущих свечей в которое надо посмотреть\n"
+                + "dirCandle === " + Gasket.isDirCandle()
+                + " ----- учитывать или нет направление свечей на которых расположены уровни\n"
+                + "dirMainCandle === " + Gasket.isDirMainCandle()
+                + " ----- учитывать или нет направление ГЛАВНЫХ свечей на которых расположены уровни\n"
+                + "showPattern === " + Gasket.isShowPattern()
+                + " ----- показывать или нет паттерн\n"
+                + "symbol === " + Gasket.getSymbol()
+                + " ----- указываем валютную пару, к примеру --> BTCUSD\n"
+                + "takeProfit === " + Gasket.getTakeProfit()
+                + " ----- указываем тейк профит --> 15.0\n"
+                + "stopLoss === " + Gasket.getStopLoss()
+                + " ----- указываем стоп лосс --> 15.0\n"
                 + "dateDifference === " + Gasket.getDateDifference()
                 + " ----- на сколько время в терминале отстает или опережает местное\n"
                 + "\n";

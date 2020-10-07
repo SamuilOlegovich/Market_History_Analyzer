@@ -11,12 +11,14 @@ public class LevelAccounting {
     private ArrayList<String> mainLevelsList;           // главные уровни
     private ArrayList<String> timeFrame;                // массив таймфреймов на которые надо обращать внимание
 
+
     public LevelAccounting() {
         this.accountingLevelsList = new ArrayList<>();
         this.mainLevelsList = new ArrayList<>();
         this.timeFrame = new ArrayList<>();
         fillAccountingLevelsList();
         fillMainLevelsList();
+        fillTimeFrame();
         Gasket.setLevelAccountingClass(this);
     }
 
@@ -321,5 +323,9 @@ public class LevelAccounting {
 
     public ArrayList<String> getMainLevelsList() {
         return mainLevelsList;
+    }
+
+    public ArrayList<String> getTimeFrame() {
+        return timeFrame;
     }
 }

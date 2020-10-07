@@ -1,10 +1,7 @@
 package controller;
 
-import model.TimesHelper;
-import model.Gasket;
-import model.ReadAndWriteSetting;
+import model.*;
 import view.ConsoleHelper;
-import model.StringHelper;
 
 
 public class ExecutorCommandos {
@@ -219,16 +216,72 @@ public class ExecutorCommandos {
                     break;
 
 
-                case "SETTINGS" :
-                    // SETTINGS=RESTART программа перезапустит настройки не отключаясь
-                    if (strings[1].equalsIgnoreCase("RESTART")) readAndWriteSetting.writeSettings();
+                case "M1":
+                    Gasket.setM1(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("M1 === " + Gasket.getM1()));
                     break;
+                case "M5":
+                    Gasket.setM5(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("M5 === " + Gasket.getM5()));
+                    break;
+                case "M15":
+                    Gasket.setM15(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("M15 === " + Gasket.getM15()));
+                    break;
+                case "M30":
+                    Gasket.setM30(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("M30 === " + Gasket.getM30()));
+                    break;
+                case "H1":
+                    Gasket.setH1(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("H1 === " + Gasket.getH1()));
+                    break;
+                case "H4":
+                    Gasket.setH4(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("H4 === " + Gasket.getH4()));
+                    break;
+
+
+                case "numberFutureCandles":
+                    Gasket.setNumberFutureCandles(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("numberFutureCandles === " + Gasket.getNumberFutureCandles()));
+                    break;
+                case "dateDifference":
+                    Gasket.setDateDifference(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("dateDifference === " + Gasket.getDateDifference()));
+                    break;
+                case "takeProfit":
+                    Gasket.setTakeProfit(Double.parseDouble(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("takeProfit === " + Gasket.getTakeProfit()));
+                    break;
+                case "stopLoss":
+                    Gasket.setStopLoss(Double.parseDouble(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("stopLoss === " + Gasket.getStopLoss()));
+                    break;
+                case "symbol":
+                    Gasket.setSymbol(strings[1]);
+                    ConsoleHelper.writeMessage(StringHelper.getString("symbol === " + Gasket.getSymbol()));
+                    break;
+                case "dirCandle":
+                    Gasket.setDirCandle(strings[1].equalsIgnoreCase("true"));
+                    ConsoleHelper.writeMessage(StringHelper.getString("dirCandle === " + Gasket.isDirCandle()));
+                    break;
+                case "dirMainCandle":
+                    Gasket.setDirMainCandle(strings[1].equalsIgnoreCase("true"));
+                    ConsoleHelper.writeMessage(StringHelper.getString("dirMainCandle === " + Gasket.isDirMainCandle()));
+                    break;
+                case "showPattern":
+                    Gasket.setShowPattern(strings[1].equalsIgnoreCase("true"));
+                    ConsoleHelper.writeMessage(StringHelper.getString("showPattern === " + Gasket.isShowPattern()));
+                    break;
+
                 default:
                     ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()
                             + " --- Вы ввели неверную команду, попробуйте еще раз === " + string
                             + "\n"
                     );
             }
+            new LevelAccounting();
         } catch (Exception e) {
             ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()
                     + " --- Ошибочка, повторите ввод === " + string

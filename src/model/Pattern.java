@@ -53,4 +53,8 @@ public class Pattern {
             ConsoleHelper.writeMessage(stringBuilder.toString());
         }
     }
+
+    public void addStatistics(ArrayList<String> in) {
+        patternList.addAll(in);
+    }
 }

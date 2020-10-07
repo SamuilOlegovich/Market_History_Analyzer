@@ -23,7 +23,6 @@ public class WritePatterns extends Thread {
                         .getFullPatternList()), path, true);
             } catch (Exception ex) {
                 ConsoleHelper.writeMessage(StringHelper.getString(Outs.SAVED_PATTERNS_FILE_WRITE_ERROR));
-                Gasket.getViewThreadClass().setPreviousColor();
             }
         } else {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.NO_PATTERN_TO_SAVE));

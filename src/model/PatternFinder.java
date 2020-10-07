@@ -97,7 +97,9 @@ public class PatternFinder extends Thread {
     // удаляем лишние уровни
     private ArrayList<String> removeExtraLevels(ArrayList<String> in) {
         ArrayList<String> accountingLevelsList = Gasket.getLevelAccountingClass().getAccountingLevelsList();
+        ArrayList<String> timeFrame = Gasket.getLevelAccountingClass().getTimeFrame();
 
+        // удаляем лисшние уровни по типу
         for (int i = in.size() - 1; i >= 0; i--) {
             boolean flag = false;
             for (String s : accountingLevelsList) {
@@ -105,6 +107,19 @@ public class PatternFinder extends Thread {
             }
             if (!flag) in.remove(i);
         }
+
+        // удаляем лишние уровни по таймфрейму
+//            ConsoleHelper.writeMessage(timeFrame.size() + "");
+        if (timeFrame.size() > 0) {
+            for (int i = in.size() - 1; i >= 0; i--) {
+                boolean flag = false;
+                for (String s : timeFrame) {
+                    if (s.equalsIgnoreCase(StringHelper.getStringData(Str.period, in.get(i)))) flag = true;
+                }
+                if (!flag) in.remove(i);
+            }
+        }
+
         return new ArrayList<>(in);
     }
 

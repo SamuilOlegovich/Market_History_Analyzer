@@ -76,19 +76,13 @@ public class Gasket {
     private static int m30 = 0;
     private static int h1 = 0;
     private static int h4 = 0;
-    private static int D1 = 0;
-    private static int H4 = 0;
-
-
-    // DirCandle
-    private static int dirCandle;
-
 
 
     // Settings
+    private static boolean dirMainCandle = false;    // учитывать или нет направление Главных свечей на которых расположены уровни
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
-    private static boolean longAndShort = false;    // учитывать или нет направление свечи на которых расположены уровни
     private static boolean showPattern = true;      // показывать или нет паттерн
+    private static boolean dirCandle = false;       // учитывать или нет направление свечи на которых расположены уровни
     private static String symbol = "BTCUSD";
     private static double takeProfit = 15.0;
     private static double stopLoss = 15.0;
@@ -107,17 +101,22 @@ public class Gasket {
         return SETTING_NOW;
     }
 
-    public static int getDirCandle() {
+
+    public static boolean isDirMainCandle() {
+        return dirMainCandle;
+    }
+
+    public static void setDirMainCandle(boolean dirMainCandle) {
+        Gasket.dirMainCandle = dirMainCandle;
+    }
+
+    public static boolean isDirCandle() {
         return dirCandle;
     }
 
-
-
-    public static void setDirCandle(int dirCandle) {
+    public static void setDirCandle(boolean dirCandle) {
         Gasket.dirCandle = dirCandle;
     }
-
-
 
     public static int getM1() {
         return m1;

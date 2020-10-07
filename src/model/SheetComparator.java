@@ -1,8 +1,6 @@
 package model;
 
 
-import view.ConsoleHelper;
-
 import java.util.ArrayList;
 
 // сравнивает лист патерна и лист паттерна найденого в истории
@@ -12,12 +10,15 @@ public class SheetComparator extends Thread {
     private int nextStepIndex;
 
 
+
     public SheetComparator(ArrayList<String> historyPatternList, int nextStepIndex) {
         this.patternList = new ArrayList<>(Gasket.getPatternClass().getPatternList());
         this.historyPatternList = new ArrayList<>(historyPatternList);
         this.nextStepIndex = nextStepIndex;
         start();
     }
+
+
 
     @Override
     public void run() {
@@ -53,22 +54,39 @@ public class SheetComparator extends Thread {
         for (int a = 0; a < historyPatternShort.size(); a++) {
             if (!historyPatternShort.get(a).equals(patternShort.get(a))) return false;
         }
+
+        if (Gasket.isDirCandle()) {
+            historyPatternShort.clear();
+            patternShort.clear();
+            historyPatternShort.addAll(historyPatternList);
+            patternShort.addAll(patternList);
+
+            historyPatternShort.sort(ComparatorHelper.getSortTheAlphabetAll());
+            patternShort.sort(ComparatorHelper.getSortTheAlphabetAll());
+
+            for (int a = 0; a < historyPatternShort.size(); a++) {
+                if (!historyPatternShort.get(a).equalsIgnoreCase(patternShort.get(a)))
+                    return false;
+            }
+        }
         return true;
     }
 
 
 
-    // проверяем правильно ли по высоте находятся главные уровни
+    // проверяем правильно ли по очередности и по высоте находятся главные уровни,
+    // а так же совпадает ли у них направление свечей
     private boolean isTheHeightOfTheMainLevelsCorrect() {
         ArrayList<String> mainLevels = new ArrayList<>(Gasket.getLevelAccountingClass().getMainLevelsList());
         ArrayList<String> historyPatternLong = new ArrayList<>(historyPatternList);
+        ArrayList<String> historyPatternCandleDirection = new ArrayList<>();
+        ArrayList<String> patternShortCandleDirection = new ArrayList<>();
         ArrayList<String> patternLong = new ArrayList<>(patternList);
         ArrayList<String> historyPatternShort = new ArrayList<>();
         ArrayList<String> patternShort = new ArrayList<>();
 
-        historyPatternLong.sort(ComparatorHelper.getSortPrice());
-        patternLong.sort(ComparatorHelper.getSortPrice());
 
+        // по очередности
         for (String s : historyPatternLong) {
             String string = StringHelper.getStringData(Str.type, s);
             for (String ss : mainLevels) {
@@ -78,6 +96,7 @@ public class SheetComparator extends Thread {
                 }
             }
         }
+
         for (String s : patternLong) {
             String string = StringHelper.getStringData(Str.type, s);
             for (String ss : mainLevels) {
@@ -87,10 +106,44 @@ public class SheetComparator extends Thread {
                 }
             }
         }
+
         for (int a = 0; a < historyPatternShort.size(); a++) {
             if (!historyPatternShort.get(a).equals(patternShort.get(a))) return false;
         }
+
+
+        // по высоте
+        historyPatternLong.sort(ComparatorHelper.getSortPrice());
+        patternLong.sort(ComparatorHelper.getSortPrice());
+
+        for (String s : historyPatternLong) {
+            String string = StringHelper.getStringData(Str.type, s);
+            for (String ss : mainLevels) {
+                if (ss.equalsIgnoreCase(string)) {
+                    historyPatternCandleDirection.add(StringHelper.getStringData(Str.dir, s));
+                    historyPatternShort.add(string);
+                    break;
+                }
+            }
+        }
+
+        for (String s : patternLong) {
+            String string = StringHelper.getStringData(Str.type, s);
+            for (String ss : mainLevels) {
+                if (ss.equalsIgnoreCase(string)) {
+                    patternShortCandleDirection.add(StringHelper.getStringData(Str.dir, s));
+                    patternShort.add(string);
+                    break;
+                }
+            }
+        }
+
+        for (int a = 0; a < historyPatternShort.size(); a++) {
+            if (!historyPatternShort.get(a).equals(patternShort.get(a))) return false;
+            if (Gasket.isDirMainCandle()) {
+                if (!historyPatternCandleDirection.get(a).equalsIgnoreCase(patternShortCandleDirection.get(a))) return false;
+            }
+        }
         return true;
     }
-
 }

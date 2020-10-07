@@ -13,5 +13,6 @@ public enum Str {
     time,
     high,
     low,
-    avg;
+    avg,
+    dir;
 }
