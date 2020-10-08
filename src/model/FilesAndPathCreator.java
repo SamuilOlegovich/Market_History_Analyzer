@@ -212,15 +212,15 @@ public class FilesAndPathCreator {
 
 
     private void createdFileHistory() {
-//        File file = new File(pathHistory);
-//        try {
-//            boolean newFile = file.createNewFile();
-//            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
-//                    + "Новый файл для History успешно создан.");
-//        } catch (IOException ex) {
-//            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
-//                    + "Не удалось создать файл History.");
-//        }
+        File file = new File(pathHistory);
+        try {
+            boolean newFile = file.createNewFile();
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
+                    + "Новый файл для History успешно создан.");
+        } catch (IOException ex) {
+            ConsoleHelper.writeMessage(TimesHelper.getDateTerminal() + " --- "
+                    + "Не удалось создать файл History.");
+        }
     }
 
 

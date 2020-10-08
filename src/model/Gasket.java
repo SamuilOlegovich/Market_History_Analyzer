@@ -15,6 +15,7 @@ public class Gasket {
     private static RunAndStopProgram runAndStopProgramClass;
     private static LevelAccounting levelAccountingClass;
     private static WritePatterns writePatternsClass;
+    private static WriteHistory writeHistoryClass;
     private static ReadHistory readHistoryClass;
     private static Statistics statisticsClass;
     private static View viewThreadClass;
@@ -79,6 +80,7 @@ public class Gasket {
 
 
     // Settings
+    private static boolean readHistoryOrConvertFilesToHistory = false;   // cчитать историю или конвертировать файлы в историю
     private static boolean dirMainCandle = false;    // учитывать или нет направление Главных свечей на которых расположены уровни
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
     private static boolean showPattern = true;      // показывать или нет паттерн
@@ -101,6 +103,22 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static boolean isReadHistoryOrConvertFilesToHistory() {
+        return readHistoryOrConvertFilesToHistory;
+    }
+
+    public static void setReadHistoryOrConvertFilesToHistory(boolean readHistoryOrConvertFilesToHistory) {
+        Gasket.readHistoryOrConvertFilesToHistory = readHistoryOrConvertFilesToHistory;
+    }
+
+    public static WriteHistory getWriteHistoryClass() {
+        return writeHistoryClass;
+    }
+
+    public static void setWriteHistoryClass(WriteHistory writeHistoryClass) {
+        Gasket.writeHistoryClass = writeHistoryClass;
+    }
 
     public static boolean isDirMainCandle() {
         return dirMainCandle;

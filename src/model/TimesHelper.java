@@ -34,15 +34,12 @@ public class TimesHelper {
 
 
     // 2020-05-21 15:30:00
-    public static synchronized Long getDateLong(String string) throws ParseException {
+    public static synchronized Date getDateLong(String string) throws ParseException {
         String s = string.replace(".", "-").replace(":", "-")
                 .replace(" ", "-");
-        ////////////////////////////
-//        System.out.println(string);
-        ///////////////////////////
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
-        Date date = new Date();
-        dateFormat.parse(s);
-        return date.getTime();
+        Date date = null;
+        date = dateFormat.parse(s);
+        return date;
     }
 }

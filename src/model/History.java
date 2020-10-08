@@ -12,6 +12,7 @@ public class History {
     public History(ArrayList<String> historyList) {
         this.historyList = new ArrayList<>(historyList);
         Gasket.setHistoryClass(this);
+        recordHistory();
     }
 
 
@@ -31,5 +32,14 @@ public class History {
             out.add(historyList.get(i));
         }
         return out;
+    }
+
+    public int getHistorySize() {
+        return historyList.size();
+    }
+
+
+    private void recordHistory() {
+        new WriteHistory();
     }
 }

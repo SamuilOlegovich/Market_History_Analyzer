@@ -5,7 +5,7 @@ import view.WriterAndReadFile;
 
 import java.util.ArrayList;
 
-public class WritePatterns extends Thread {
+public class WritePatterns {
     private String path;
 
 

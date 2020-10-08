@@ -3,8 +3,10 @@ package model;
 import com.sun.source.tree.Tree;
 import view.ConsoleHelper;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 
@@ -15,9 +17,16 @@ public class ConverterHistory extends Thread {
     private ArrayList<String> historyJSON;
     private ArrayList<String> history;
 
+
+
     public ConverterHistory(ArrayList<String> historyJSON) {
-        this.historyJSON = new ArrayList<>(historyJSON);
-        this.history = new ArrayList<>();
+        if (Gasket.isReadHistoryOrConvertFilesToHistory()) {
+            this.history = new ArrayList<>(historyJSON);
+            this.historyJSON = new ArrayList<>();
+        } else {
+            this.historyJSON = new ArrayList<>(historyJSON);
+            this.history = new ArrayList<>();
+        }
         start();
     }
 
@@ -25,20 +34,14 @@ public class ConverterHistory extends Thread {
 
     @Override
     public void run() {
-        convertHistory();
-        removeDuplicateCandles();
-//        show();
+        if (!Gasket.isReadHistoryOrConvertFilesToHistory()) {
+            convertHistory();
+            removeDuplicateCandles();
+        }
         new History(history);
-        historyJSON.clear();
         history.clear();
     }
 
-    private void show() {
-            ConsoleHelper.writeMessage(history.size()+ "====");
-        for (String s : history) {
-            ConsoleHelper.writeMessage(s);
-        }
-    }
 
 
 
@@ -68,8 +71,8 @@ public class ConverterHistory extends Thread {
                 stringBuilder.append(builder.toString());
             }
             if (stringBuilder.toString().endsWith("]},")) {
-                history.add(stringBuilder
-                        .substring(0, stringBuilder.length() - 1));
+                history.add(stringBuilder.substring(0, stringBuilder.length() - 1)
+                        .replaceAll("\"time\":\"", "\"time\": \""));
                 stringBuilder.delete(0, stringBuilder.length());
             }
 
@@ -86,62 +89,220 @@ public class ConverterHistory extends Thread {
         }
 
         ConsoleHelper.writeMessage(StringHelper.getString(Outs.SORTING_HISTORY));
+        //////////
+//        ConsoleHelper.writeMessage(history.size()+ "====+++");
+        /////////
+        TreeSet<String> treeSet = new TreeSet<>(history);
+        history.clear();
+        history.addAll(treeSet);
+        //////////
+//        ConsoleHelper.writeMessage(history.size()+ "====---");
+        /////////
         history.sort(ComparatorHelper.getSortTheDateAll());
+        historyJSON.clear();
     }
 
 
 
+//    // удаляем повторяющиеся свечи
+//    private void removeDuplicateCandles() {
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "-");
+//        /////////
+//        ConsoleHelper.writeMessage(StringHelper.getString(Outs.REMOVING_EXTRA_FROM_HISTORY));
+//        TreeSet<Integer> treeSet = new TreeSet<>();
+//        int index = 60 * 48;
+//
+//        for (int i = index; i >= 0; i--) {
+//            history.remove(history.size() - 1);
+//            history.remove(0);
+//        }
+//
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "--");
+//        /////////
+//
+//        for (int a = 0; a < history.size() - 2; a++) {
+//            String s = StringHelper.getStringData(Str.time, history.get(a));
+//            ArrayList<Integer> listIndex = new ArrayList<>();
+//
+//            /////////
+////            ConsoleHelper.writeMessage("a");
+//            /////////
+//
+//            if (!listIndex.contains(a)) {
+//                for (int i = a + 1; i < history.size(); i++) {
+//                    if (s.equals(StringHelper.getStringData(Str.time, history.get(i)))) {
+//
+//                        /////////
+//                        ConsoleHelper.writeMessage("c");
+//                        /////////
+//
+//                        listIndex.add(i);
+//                        treeSet.add(a);
+//                        treeSet.add(i);
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            if (a == (history.size() / 100) * 10) ConsoleHelper.writeMessage(StringHelper.getString("10%"));
+//            else if (a == (history.size() / 100) * 20) ConsoleHelper.writeMessage(StringHelper.getString("20%"));
+//            else if (a == (history.size() / 100) * 30) ConsoleHelper.writeMessage(StringHelper.getString("30%"));
+//            else if (a == (history.size() / 100) * 40) ConsoleHelper.writeMessage(StringHelper.getString("40%"));
+//            else if (a == (history.size() / 100) * 50) ConsoleHelper.writeMessage(StringHelper.getString("50%"));
+//            else if (a == (history.size() / 100) * 60) ConsoleHelper.writeMessage(StringHelper.getString("60%"));
+//            else if (a == (history.size() / 100) * 70) ConsoleHelper.writeMessage(StringHelper.getString("70%"));
+//            else if (a == (history.size() / 100) * 80) ConsoleHelper.writeMessage(StringHelper.getString("80%"));
+//            else if (a == (history.size() / 100) * 90) ConsoleHelper.writeMessage(StringHelper.getString("90%"));
+//            else if (a == (history.size() - 5)) ConsoleHelper.writeMessage(StringHelper.getString("100%\n"));
+//        }
+//
+//        ArrayList<Integer> arrayList = new ArrayList<>(treeSet);
+//        Collections.reverse(arrayList);
+//        treeSet.clear();
+//
+//        for (Integer ind : arrayList) {
+//            history.remove(ind);
+//        }
+//
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "---");
+//        /////////
+//    }
+
+
     // удаляем повторяющиеся свечи
     private void removeDuplicateCandles() {
-        /////////
-        ConsoleHelper.writeMessage(history.size() + "-");
-        /////////
         ConsoleHelper.writeMessage(StringHelper.getString(Outs.REMOVING_EXTRA_FROM_HISTORY));
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        int index = 60 * 48;
+            int count = 0;
+        for (int a = history.size() - 1; a >= 0; a--) {
+            long b = 0;
+            long c = 0;
 
-        for (int i = index; i >= 0; i--) {
-            history.remove(history.size() - 1);
-            history.remove(0);
-        }
+            if (a != 0) {
+                try {
+                    b = TimesHelper.getDateLong(StringHelper.getStringData(Str.time, history.get(a)
+                                    .split(",\"" + Str.levels.toString())[0]))
+                            .getTime();
+                    b = TimesHelper.getDateLong(StringHelper.getStringData(Str.time, history.get(a - 1)
+                                    .split(",\"" + Str.levels.toString())[0]))
+                            .getTime();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-        /////////
-        ConsoleHelper.writeMessage(history.size() + "--");
-        /////////
-
-        for (int a = 0; a < history.size() - 2; a++) {
-            String s = StringHelper.getStringData(Str.time, history.get(a));
-
-            for (int i = a + 1; i < history.size(); i++) {
-                if (s.equals(StringHelper.getStringData(Str.time, history.get(i)))) {
-                    treeSet.add(a);
-                    treeSet.add(i);
-                    break;
+                if (b == c) {
+                    history.remove(a);
+                    count++;
                 }
             }
 
-            if (a == (history.size() / 100) * 10) ConsoleHelper.writeMessage(StringHelper.getString("10%"));
-            else if (a == (history.size() / 100) * 20) ConsoleHelper.writeMessage(StringHelper.getString("20%"));
-            else if (a == (history.size() / 100) * 30) ConsoleHelper.writeMessage(StringHelper.getString("30%"));
-            else if (a == (history.size() / 100) * 40) ConsoleHelper.writeMessage(StringHelper.getString("40%"));
+            if (a == (history.size() / 100) * 90) ConsoleHelper.writeMessage(StringHelper.getString("10%"));
+            else if (a == (history.size() / 100) * 80) ConsoleHelper.writeMessage(StringHelper.getString("20%"));
+            else if (a == (history.size() / 100) * 70) ConsoleHelper.writeMessage(StringHelper.getString("30%"));
+            else if (a == (history.size() / 100) * 60) ConsoleHelper.writeMessage(StringHelper.getString("40%"));
             else if (a == (history.size() / 100) * 50) ConsoleHelper.writeMessage(StringHelper.getString("50%"));
-            else if (a == (history.size() / 100) * 60) ConsoleHelper.writeMessage(StringHelper.getString("60%"));
-            else if (a == (history.size() / 100) * 70) ConsoleHelper.writeMessage(StringHelper.getString("70%"));
-            else if (a == (history.size() / 100) * 80) ConsoleHelper.writeMessage(StringHelper.getString("80%"));
-            else if (a == (history.size() / 100) * 90) ConsoleHelper.writeMessage(StringHelper.getString("90%"));
-            else if (a == (history.size() - 5)) ConsoleHelper.writeMessage(StringHelper.getString("100%\n"));
+            else if (a == (history.size() / 100) * 40) ConsoleHelper.writeMessage(StringHelper.getString("60%"));
+            else if (a == (history.size() / 100) * 30) ConsoleHelper.writeMessage(StringHelper.getString("70%"));
+            else if (a == (history.size() / 100) * 20) ConsoleHelper.writeMessage(StringHelper.getString("80%"));
+            else if (a == (history.size() / 100) * 10) ConsoleHelper.writeMessage(StringHelper.getString("90%"));
+            else if (a == 5) ConsoleHelper.writeMessage(StringHelper.getString("100%\n"));
+        }
+            ConsoleHelper.writeMessage(StringHelper.getString(Outs.REMOVED_LIKE_STORY_ITEMS.toString()
+                    + " --> " + count));
+    }
+
+
+//    // удаляем повторяющиеся свечи
+//    private void removeDuplicateCandles() {
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "-");
+//        ConsoleHelper.writeMessage(history.get(20828));
+//        ConsoleHelper.writeMessage(history.get(20827));
+//        /////////
+//        ConsoleHelper.writeMessage(StringHelper.getString(Outs.REMOVING_EXTRA_FROM_HISTORY));
+//        TreeMap<Long, Integer> treeMap = new TreeMap<>();
+//        TreeSet<Integer> treeSet = new TreeSet<>();
+//        int index = 60 * 48;
+//
+//        for (int i = index; i >= 0; i--) {
+//            history.remove(history.size() - 1);
+//            history.remove(0);
+//        }
+//
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "--");
+//        /////////
+//
+////        TreeSet<String> t = new TreeSet<>(history);
+////        history.clear();
+////        history.addAll(t);
+//
+//        for (int a = 0; a < history.size() - 2; a++) {
+////            String time = StringHelper.getStringData(Str.time, history.get(a).split(",\"" + Str.levels.toString())[0]);
+//            long time = 0L;
+//
+//            try {
+//                time = TimesHelper.getDateLong(StringHelper
+//                        .getStringData(Str.time, history.get(a).split(",\"" + Str.levels.toString())[0])).getTime();
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//
+//            if (treeMap.containsKey(time)) {
+//                treeSet.add(treeMap.get(time));
+//                treeSet.add(a);
+//                /////////
+////                ConsoleHelper.writeMessage("key " + time + " index " + a
+////                        + "\nkey " + time + " index " + treeMap.get(time));
+////                ConsoleHelper.writeMessage(history.get(a) + "\n" +
+////                        history.get(treeMap.get(time)));
+//                /////////
+//            } else {
+//                treeMap.put(time, a);
+//            }
+//
+//            if (a == (history.size() / 100) * 10) ConsoleHelper.writeMessage(StringHelper.getString("10%"));
+//            else if (a == (history.size() / 100) * 20) ConsoleHelper.writeMessage(StringHelper.getString("20%"));
+//            else if (a == (history.size() / 100) * 30) ConsoleHelper.writeMessage(StringHelper.getString("30%"));
+//            else if (a == (history.size() / 100) * 40) ConsoleHelper.writeMessage(StringHelper.getString("40%"));
+//            else if (a == (history.size() / 100) * 50) ConsoleHelper.writeMessage(StringHelper.getString("50%"));
+//            else if (a == (history.size() / 100) * 60) ConsoleHelper.writeMessage(StringHelper.getString("60%"));
+//            else if (a == (history.size() / 100) * 70) ConsoleHelper.writeMessage(StringHelper.getString("70%"));
+//            else if (a == (history.size() / 100) * 80) ConsoleHelper.writeMessage(StringHelper.getString("80%"));
+//            else if (a == (history.size() / 100) * 90) ConsoleHelper.writeMessage(StringHelper.getString("90%"));
+//            else if (a == (history.size() - 5)) ConsoleHelper.writeMessage(StringHelper.getString("100%\n"));
+//        }
+//
+//        ArrayList<Integer> arrayList = new ArrayList<>(treeSet);
+//        Collections.reverse(arrayList);
+//        treeSet.clear();
+//        treeMap.clear();
+//
+//        /////////
+//        ConsoleHelper.writeMessage(arrayList.size() + "---+---");
+//        /////////
+//
+//        for (Integer ind : arrayList) {
+//            history.remove(ind);
+//        }
+//
+//        /////////
+//        ConsoleHelper.writeMessage(history.size() + "---");
+//        /////////
+//    }
+
+
+    private void historyCheck () {
+        long time = 0;
+
+        try {
+            time = TimesHelper.getDateLong(StringHelper
+            .getStringData(Str.time, history.get(0).split(",\"" + Str.levels.toString())[0])).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-        ArrayList<Integer> arrayList = new ArrayList<>(treeSet);
-        Collections.reverse(arrayList);
-        treeSet.clear();
-
-        for (Integer ind : arrayList) {
-            history.remove(ind);
-        }
-
-        /////////
-        ConsoleHelper.writeMessage(history.size() + "---");
-        /////////
     }
 }

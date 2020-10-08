@@ -5,9 +5,9 @@ import model.Gasket;
 public class ConsoleHelper {
     public static synchronized void writeMessage(String string) {
         Gasket.getViewThreadClass().updateInfoView(string);
-//        WriterAndReadFile.writerFile(string + "\n"
-//                , Gasket.getFilesAndPathCreator().getPathLogs()
-//                , true);
+        WriterAndReadFile.writerFile(string + "\n"
+                , Gasket.getFilesAndPathCreatorClass().getPathLogs()
+                , true);
         System.out.println(string);
     }
 

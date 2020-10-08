@@ -42,6 +42,13 @@ public enum Outs {
     SORTING_HISTORY,
     СОРТИРУЮ_ИСТОРИЮ,
     REMOVING_EXTRA_FROM_HISTORY,
-    УДАЛЯЮ_ЛИШНЕЕ_ИЗ_ИСТОРИЮ
+    УДАЛЯЮ_ЛИШНЕЕ_ИЗ_ИСТОРИЮ,
+
+    SAVED_HISTORY_FILE_WRITE_ERROR,
+    NO_HISTORY_TO_SAVE,
+    HISTORY_SUCCESSFULLY_SAVED,
+
+    REMOVED_LIKE_STORY_ITEMS,
+    УДАЛЕНО_ОДИНАКОВЫХ_ЭЛЕМЕНТОВ_ИСТОРИИ
     ;
 }
