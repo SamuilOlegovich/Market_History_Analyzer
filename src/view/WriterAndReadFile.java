@@ -6,6 +6,8 @@ import model.StringHelper;
 import java.io.*;
 import java.util.ArrayList;
 
+
+
 public class WriterAndReadFile {
     public static void writerFile(String string, String path, boolean reWrite) {
         File file = new File(path);

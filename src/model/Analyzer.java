@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+
+
 public class Analyzer extends Thread {
     private ArrayList<String> historyList;
     double maxSell;
