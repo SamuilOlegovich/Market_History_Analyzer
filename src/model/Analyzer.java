@@ -6,14 +6,15 @@ import java.util.ArrayList;
 
 public class Analyzer extends Thread {
     private ArrayList<String> historyList;
-    double maxSell;
-    double maxBuy;
+    private double maxSell;
+    private double maxBuy;
+    private int start;
+
 
 
 
     public Analyzer(int start) {
-        this.historyList = new ArrayList<>(Gasket.getHistoryClass()
-                .getHistoryList(start, start + Gasket.getNumberFutureCandles() + 1));
+        this.start = start;
         this.maxSell = 0.0;
         this.maxBuy = 0.0;
         this.start();
@@ -23,6 +24,7 @@ public class Analyzer extends Thread {
 
     @Override
     public void run() {
+        getList();
         maxSell = getMaxSell();
         maxBuy = getMaxBuy();
         Gasket.getStatisticsClass().setMaxBuySell(maxBuy, maxSell);
@@ -75,5 +77,19 @@ public class Analyzer extends Thread {
                 return;
             }
         }
+    }
+
+
+    // устанавливаем реальное время отсчета и находим его индекс в листе истории
+    private void getList() {
+        String time = StringHelper.getStringData(Str.time, historyList.get(start).split(Str.levels.toString())[0]);
+        String timeMinute = time.split(":")[1];  // 2020-05-21 15:30:00
+        if (timeMinute.endsWith("0") || timeMinute.endsWith("5")) start = start + 5;
+        else if (timeMinute.endsWith("1") || timeMinute.endsWith("6")) start = start + 4;
+        else if (timeMinute.endsWith("2") || timeMinute.endsWith("7")) start = start + 3;
+        else if (timeMinute.endsWith("3") || timeMinute.endsWith("8")) start = start + 2;
+        else if (timeMinute.endsWith("4") || timeMinute.endsWith("9")) start = start + 1;
+        this.historyList = new ArrayList<>(Gasket.getHistoryClass()
+                .getHistoryList(start, start + Gasket.getNumberFutureCandles() + 1));
     }
 }
