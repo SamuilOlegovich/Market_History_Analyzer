@@ -281,6 +281,11 @@ public class ExecutorCommandos {
                     ConsoleHelper.writeMessage(StringHelper.getString("readHistoryOrConvertFilesToHistory === "
                             + Gasket.isReadHistoryOrConvertFilesToHistory()));
                     break;
+                case "indentFromLastLevelInPattern":
+                    Gasket.setIndentFromLastLevelInPattern(Integer.parseInt(strings[1]));
+                    ConsoleHelper.writeMessage(StringHelper.getString("indentFromLastLevelInPattern === "
+                            + Gasket.getIndentFromLastLevelInPattern()));
+                    break;
 
                 default:
                     ConsoleHelper.writeMessage(TimesHelper.getDateTerminal()

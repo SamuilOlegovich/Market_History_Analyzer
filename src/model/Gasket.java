@@ -82,10 +82,11 @@ public class Gasket {
 
     // Settings
     private static boolean readHistoryOrConvertFilesToHistory = false;   // считать историю или конвертировать файлы в историю
-    private static boolean dirMainCandle = false;    // учитывать или нет направление Главных свечей на которых расположены уровни
-    private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
-    private static boolean showPattern = true;      // показывать или нет паттерн
-    private static boolean dirCandle = false;       // учитывать или нет направление свечи на которых расположены уровни
+    private static int indentFromLastLevelInPattern = 5;                // отступ от последнего уровня в паттерне (минуты)
+    private static boolean dirMainCandle = false;                      // учитывать или нет направление Главных свечей на которых расположены уровни
+    private static int numberFutureCandles = 30;                      // количество будущих свечей в которое надо посмотреть
+    private static boolean showPattern = true;                       // показывать или нет паттерн
+    private static boolean dirCandle = false;                       // учитывать или нет направление свечи на которых расположены уровни
     private static String symbol = "BTCUSD";
     private static double takeProfit = 15.0;
     private static double stopLoss = 15.0;
@@ -104,6 +105,14 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static int getIndentFromLastLevelInPattern() {
+        return indentFromLastLevelInPattern;
+    }
+
+    public static void setIndentFromLastLevelInPattern(int indentFromLastLevelInPattern) {
+        Gasket.indentFromLastLevelInPattern = indentFromLastLevelInPattern;
+    }
 
     public static ReadAndWriteSetting getReadAndWriteSettingClass() {
         return readAndWriteSettingClass;

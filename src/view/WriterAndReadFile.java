@@ -1,5 +1,6 @@
 package view;
 
+
 import model.Outs;
 import model.StringHelper;
 

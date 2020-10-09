@@ -2,6 +2,8 @@ package view;
 
 import model.Gasket;
 
+
+
 public class ConsoleHelper {
     public static synchronized void writeMessage(String string) {
         Gasket.getViewThreadClass().updateInfoView(string);
@@ -116,6 +118,8 @@ public class ConsoleHelper {
                 + "\n"
                 + "numberFutureCandles === " + Gasket.getNumberFutureCandles()
                 + " ----- количество будущих свечей в которое надо посмотреть\n"
+                + "indentFromLastLevelInPattern === " + Gasket.getIndentFromLastLevelInPattern()
+                + " ----- отступ от последнего уровня в паттерне (минуты)\n"
                 + "dirCandle === " + Gasket.isDirCandle()
                 + " ----- учитывать или нет направление свечей на которых расположены уровни\n"
                 + "dirMainCandle === " + Gasket.isDirMainCandle()
