@@ -17,9 +17,9 @@ public class ReadAndWriteSetting {
     public ReadAndWriteSetting(ExecutorCommandos executorCommandos) {
         this.path = Gasket.getFilesAndPathCreatorClass().getPathSettings();
         this.executorCommandos = executorCommandos;
+        Gasket.setReadAndWriteSettingClass(this);
         readFileSettings();
     }
-
 
 
     private void readFileSettings() {

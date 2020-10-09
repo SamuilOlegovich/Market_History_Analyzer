@@ -1,7 +1,5 @@
 package model;
 
-import view.ConsoleHelper;
-
 import java.util.ArrayList;
 
 
@@ -10,6 +8,8 @@ public class History {
     private ArrayList<String> historyList;
 
     public History(ArrayList<String> historyList) {
+        Gasket.setReadHistoryOrConvertFilesToHistory(true);
+        Gasket.getReadAndWriteSettingClass().writeSettings();
         this.historyList = new ArrayList<>(historyList);
         Gasket.setHistoryClass(this);
         recordHistory();

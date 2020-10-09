@@ -10,6 +10,7 @@ import view.View;
 public class Gasket {
     // Class
     private static FilesAndPathCreator filesAndPathCreatorClass;
+    private static ReadAndWriteSetting readAndWriteSettingClass;
     private static PatternStatistics patternStatisticsClass;
     private static ExecutorCommandos executorCommandosClass;
     private static RunAndStopProgram runAndStopProgramClass;
@@ -80,7 +81,7 @@ public class Gasket {
 
 
     // Settings
-    private static boolean readHistoryOrConvertFilesToHistory = false;   // cчитать историю или конвертировать файлы в историю
+    private static boolean readHistoryOrConvertFilesToHistory = false;   // считать историю или конвертировать файлы в историю
     private static boolean dirMainCandle = false;    // учитывать или нет направление Главных свечей на которых расположены уровни
     private static int numberFutureCandles = 30;    // количество будущих свечей в которое надо посмотреть
     private static boolean showPattern = true;      // показывать или нет паттерн
@@ -103,6 +104,14 @@ public class Gasket {
         return SETTING_NOW;
     }
 
+
+    public static ReadAndWriteSetting getReadAndWriteSettingClass() {
+        return readAndWriteSettingClass;
+    }
+
+    public static void setReadAndWriteSettingClass(ReadAndWriteSetting readAndWriteSettingClass) {
+        Gasket.readAndWriteSettingClass = readAndWriteSettingClass;
+    }
 
     public static boolean isReadHistoryOrConvertFilesToHistory() {
         return readHistoryOrConvertFilesToHistory;

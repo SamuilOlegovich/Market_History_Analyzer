@@ -130,6 +130,8 @@ public class ConsoleHelper {
                 + " ----- указываем стоп лосс --> 15.0\n"
                 + "dateDifference === " + Gasket.getDateDifference()
                 + " ----- на сколько время в терминале отстает или опережает местное\n"
+                + "readHistoryOrConvertFilesToHistory === " + Gasket.isReadHistoryOrConvertFilesToHistory()
+                + " ----- считать историю или конвертировать файлы в историю (при первом старте должно быть false)\n"
                 + "\n";
     }
 

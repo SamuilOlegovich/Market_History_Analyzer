@@ -7,9 +7,11 @@ import view.ConsoleHelper;
 public class ExecutorCommandos {
     private ReadAndWriteSetting readAndWriteSetting;
 
+
     public ExecutorCommandos() {
         Gasket.setExecutorCommandosClass(this);
     }
+
 
     public void setReadAndWriteSetting(ReadAndWriteSetting readAndWriteSetting) {
         this.readAndWriteSetting = readAndWriteSetting;
@@ -273,6 +275,11 @@ public class ExecutorCommandos {
                 case "showPattern":
                     Gasket.setShowPattern(strings[1].equalsIgnoreCase("true"));
                     ConsoleHelper.writeMessage(StringHelper.getString("showPattern === " + Gasket.isShowPattern()));
+                    break;
+                case "readHistoryOrConvertFilesToHistory":
+                    Gasket.setReadHistoryOrConvertFilesToHistory(strings[1].equalsIgnoreCase("true"));
+                    ConsoleHelper.writeMessage(StringHelper.getString("readHistoryOrConvertFilesToHistory === "
+                            + Gasket.isReadHistoryOrConvertFilesToHistory()));
                     break;
 
                 default:
