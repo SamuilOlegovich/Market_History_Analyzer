@@ -51,8 +51,8 @@ public class PatternFinder extends Thread {
                     result.add(s);
                 }
             } catch (Exception e) {
+                Gasket.getViewThreadClass().setColorError();
                 ConsoleHelper.writeMessage(StringHelper.getString(Outs.WRONG_DATE_FORMAT_IN_THE_HISTORY_FILE));
-                Gasket.getViewThreadClass().setPreviousColor();
             }
         }
         return result;
@@ -109,7 +109,6 @@ public class PatternFinder extends Thread {
         }
 
         // удаляем лишние уровни по таймфрейму
-//            ConsoleHelper.writeMessage(timeFrame.size() + "");
         if (timeFrame.size() > 0) {
             for (int i = in.size() - 1; i >= 0; i--) {
                 boolean flag = false;

@@ -13,6 +13,7 @@ public class History {
         Gasket.setHistoryClass(this);
         recordHistory();
         writeSetting();
+        Gasket.getViewThreadClass().setPreviousColor();
     }
 
 

@@ -21,6 +21,8 @@ public class Main {
                 }
             }
         }
+        view.setColorFoStarted();
+
 
         // Запускаем все что связано с путями, файлами, чнением и настройками.
 //        Gasket.setCommandos(new Commandos());

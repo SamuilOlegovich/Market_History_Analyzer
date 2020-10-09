@@ -138,7 +138,6 @@ public class View extends Thread {
                         jPanel.setBackground(Color.BLUE);
                     }
                 }.start();
-
                 Gasket.getWritePatternsClass().writePattern();
             }
         });
@@ -171,6 +170,15 @@ public class View extends Thread {
                 jTextArea.append(string + "\n");
             }
         }
+    }
+
+    public void setColorFoStarted() {
+        color = jPanel.getBackground();
+        jPanel.setBackground(Color.PINK);
+    }
+
+    public void setColorError() {
+        jPanel.setBackground(Color.RED);
     }
 
 

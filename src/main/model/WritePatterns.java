@@ -22,9 +22,11 @@ public class WritePatterns {
                 WriterAndReadFile.writerFile(getStringWrite(Gasket.getPatternClass()
                         .getFullPatternList()), path, true);
             } catch (Exception ex) {
+                Gasket.getViewThreadClass().setColorError();
                 ConsoleHelper.writeMessage(StringHelper.getString(Outs.SAVED_PATTERNS_FILE_WRITE_ERROR));
             }
         } else {
+            Gasket.getViewThreadClass().setColorError();
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.NO_PATTERN_TO_SAVE));
         }
         ConsoleHelper.writeMessage(StringHelper.getString(Outs.PATTERN_SUCCESSFULLY_SAVED));

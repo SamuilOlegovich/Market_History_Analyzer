@@ -28,7 +28,7 @@ public class DataParser extends Thread {
             new PatternFinder(start, end);
         } catch (Exception e) {
             ConsoleHelper.writeMessage(StringHelper.getString(Outs.WRONG_DATE_FORMAT));
-            Gasket.getViewThreadClass().setPreviousColor();
+            Gasket.getViewThreadClass().setColorError();
         }
     }
 

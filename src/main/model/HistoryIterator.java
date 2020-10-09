@@ -73,6 +73,7 @@ public class HistoryIterator extends Thread {
             }
         }
         Gasket.getStatisticsClass().showStatistics();
+
     }
 
 
