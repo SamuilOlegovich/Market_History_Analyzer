@@ -1,5 +1,7 @@
 package main.model;
 
+import main.view.ConsoleHelper;
+
 import java.util.ArrayList;
 
 
@@ -26,6 +28,7 @@ public class Analyzer extends Thread {
     public void run() {
         getList();
         buyOrSellThisPattern();
+        buyOrSellThisPatternEndCandle();
         maxSell = getMaxSell();
         maxBuy = getMaxBuy();
         Gasket.getStatisticsClass().setMaxBuySell(maxBuy, maxSell);
@@ -41,6 +44,10 @@ public class Analyzer extends Thread {
             double low = Double.parseDouble(StringHelper.getStringData(Str.low, s));
             if (start > low) {
                 result = Math.max(start - low, result);
+//                if (start - low > result) {
+//                    ConsoleHelper.writeMessage(start + "===" + low + "===" + result);
+//                    result = start - low;
+//                }
             }
         }
         return result;
@@ -60,10 +67,9 @@ public class Analyzer extends Thread {
     }
 
 
+    // определяем направление патерна по тейкам и стопам
     private void buyOrSellThisPattern() {
-
         double start = Double.parseDouble(StringHelper.getStringData(Str.open, historyList.get(0)));
-        // определяем направление патерна либо по тейкам и стопам, либо по послел конечной свече.
         double takeProfit = start + Gasket.getTakeProfit();
         double stopLoss = start - Gasket.getTakeProfit();
         for (String s : historyList) {
@@ -82,6 +88,21 @@ public class Analyzer extends Thread {
     }
 
 
+    // отдаем статистику по последней свече бай или сел итого паттерн
+    private void buyOrSellThisPatternEndCandle() {
+        double start = Double.parseDouble(StringHelper.getStringData(Str.open, historyList.get(0)));
+        double close = Double.parseDouble(StringHelper.getStringData(Str.close, historyList.get(historyList.size() - 1)));
+        if (start < close) {
+            Gasket.getStatisticsClass().buyEndPlus();
+            return;
+        }
+        if (start > close) {
+            Gasket.getStatisticsClass().sellEndPlus();
+        }
+    }
+
+
+
     // устанавливаем реальное время отсчета и находим его индекс в листе истории
     private void getList() {
         String time = StringHelper.getStringData(Str.time, Gasket.getHistoryClass()
@@ -95,5 +116,6 @@ public class Analyzer extends Thread {
         else if (timeMinute.endsWith("4") || timeMinute.endsWith("9")) start += Gasket.getIndentFromLastLevelInPattern() + 1;
         this.historyList = new ArrayList<>(Gasket.getHistoryClass()
                 .getHistoryList(start, start + Gasket.getNumberFutureCandles() + 1));
+//        ConsoleHelper.writeMessage(historyList.size() + "===" + start + " === ");
     }
 }

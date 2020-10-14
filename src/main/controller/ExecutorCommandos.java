@@ -272,10 +272,6 @@ public class ExecutorCommandos {
                     Gasket.setDirCandle(strings[1].equalsIgnoreCase("true"));
                     ConsoleHelper.writeMessage(StringHelper.getString("dirCandle === " + Gasket.isDirCandle()));
                     break;
-                case "dirMainCandle":
-                    Gasket.setTakeAndStopOrNot(strings[1].equalsIgnoreCase("true"));
-                    ConsoleHelper.writeMessage(StringHelper.getString("takeAndStopOrNot === " + Gasket.isTakeAndStopOrNot()));
-                    break;
                 case "showPattern":
                     Gasket.setShowPattern(strings[1].equalsIgnoreCase("true"));
                     ConsoleHelper.writeMessage(StringHelper.getString("showPattern === " + Gasket.isShowPattern()));

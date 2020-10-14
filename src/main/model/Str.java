@@ -4,6 +4,7 @@ public enum Str {
     END,
     NEXT,
     levels,
+    close,
     period,
     preview,
     price,

@@ -82,14 +82,13 @@ public class Gasket {
     // Settings
     private static boolean readHistoryOrConvertFilesToHistory = false;   // считать историю или конвертировать файлы в историю
     private static int indentFromLastLevelInPattern = 5;                // отступ от последнего уровня в паттерне (минуты)
-    private static boolean takeAndStopOrNot = false;                   // определать направление по тейку и стопу или по последней свече
     private static boolean dirMainCandle = false;                     // учитывать или нет направление Главных свечей на которых расположены уровни
     private static int numberFutureCandles = 30;                     // количество будущих свечей в которое надо посмотреть
     private static boolean showPattern = true;                      // показывать или нет паттерн
     private static boolean dirCandle = false;                      // учитывать или нет направление свечи на которых расположены уровни
     private static String symbol = "BTCUSD";
-    private static double takeProfit = 15.0;
-    private static double stopLoss = 15.0;
+    private static double takeProfit = 30.0;
+    private static double stopLoss = 30.0;
     private static int dateDifference = 0;
 
 
@@ -103,15 +102,6 @@ public class Gasket {
 
     public static String getSettingNow() {
         return SETTING_NOW;
-    }
-
-
-    public static boolean isTakeAndStopOrNot() {
-        return takeAndStopOrNot;
-    }
-
-    public static void setTakeAndStopOrNot(boolean takeAndStopOrNot) {
-        Gasket.takeAndStopOrNot = takeAndStopOrNot;
     }
 
     public static int getIndentFromLastLevelInPattern() {

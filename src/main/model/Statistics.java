@@ -13,6 +13,8 @@ public class Statistics {
     private double minSell;
     private double maxBuy;
     private double minBuy;
+    private int sellEnd;
+    private int buyEnd;
     private int sell;
     private int buy;
 
@@ -26,6 +28,8 @@ public class Statistics {
         this.minBuy = 1000.0;
         this.maxSell = 0.0;
         this.maxBuy = 0.0;
+        this.sellEnd = 0;
+        this.buyEnd = 0;
         this.sell = 0;
         this.buy = 0;
         Gasket.setStatisticsClass(this);
@@ -44,10 +48,13 @@ public class Statistics {
 
 
     public synchronized void setMaxBuySell(double buy, double sell) {
-        maxSell = Math.max(sell, maxSell);
-        minSell = Math.min(sell, minSell);
-        maxBuy = Math.max(buy, maxBuy);
-        minBuy = Math.min(buy, minBuy);
+//        if (sell > maxSell) {
+//            maxSell = sell;
+//        }
+        maxSell = Math.max(maxSell, sell);
+        minSell = Math.min(minSell, sell);
+        maxBuy = Math.max(maxBuy, buy);
+        minBuy = Math.min(minBuy, buy);
         averageSell.add(sell);
         averageBuy.add(buy);
     }
@@ -70,11 +77,17 @@ public class Statistics {
         new Statistics();
 
         return  "\n\n\n --- *** STATISTICS *** --- " +
-                "\nNumber of repetitions  -->  " + numberOfRepetitionsOfPattern +
-                "\nMax Sell  -->  " + maxSell + "\nMax Buy  -->  " + maxBuy +
-                "\nAverage Sell --> " + ss + "\nAverage Buy --> " + bb +
-                "\nMin Sell  -->  " + minSell + "\nMin Buy  -->  " + minBuy +
-                "\nSell  -->  " + sell + "\nBuy  --> " + buy +
+                "\nNumber of repetitions  -->  " + numberOfRepetitionsOfPattern + "   --->   количество повторений паттерна в истории" +
+                "\nMax Sell  -->  " + maxSell + "   --->   максимальное отклонение в селл после паттерна" +
+                "\nMax Buy  -->  " + maxBuy + "   --->   максимальное отклонение в бай после паттерна" +
+                "\nAverage Sell --> " + ss + "   --->   среднее отклонение в селл после паттерна" +
+                "\nAverage Buy --> " + bb + "   --->   среднее отклонение в бай после паттерна" +
+                "\nMin Sell  -->  " + minSell + "   --->   минимальное отклонение в селл после паттерна" +
+                "\nMin Buy  -->  " + minBuy + "   --->   минимальное отклонение в бай после паттерна" +
+                "\nSellEnd  -->  " + sellEnd + "   --->   количество раз в сел по последней свече" +
+                "\nBuyEnd  --> " + buyEnd + "   --->   количество раз в бай по последней свече" +
+                "\nSell  -->  " + sell + "   --->   количество раз в сел по тейку" +
+                "\nBuy  --> " + buy + "   --->   количество раз в бай по тейку" +
                 "\n\n";
     }
 
@@ -89,6 +102,8 @@ public class Statistics {
         arrayList.add("Average Buy --> " + b);
         arrayList.add("Min Sell  -->  " + minSell);
         arrayList.add("Min Buy  -->  " + minBuy);
+        arrayList.add("SellEnd  -->  " + sell);
+        arrayList.add("BuyEnd  --> " + buy);
         arrayList.add("Sell  -->  " + sell);
         arrayList.add("Buy  --> " + buy);
         return arrayList;
@@ -97,6 +112,14 @@ public class Statistics {
 
     public synchronized void setNumberOfRepetitionsOfPattern() {
         this.numberOfRepetitionsOfPattern++;
+    }
+
+    public synchronized void sellEndPlus() {
+        this.sellEnd++;
+    }
+
+    public synchronized void buyEndPlus() {
+        this.buyEnd++;
     }
 
     public synchronized void sellPlus() {

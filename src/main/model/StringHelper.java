@@ -33,7 +33,7 @@ public class StringHelper {
                 }
                 return s.replaceAll(key.toString() + "\":\"", "")
                         .replaceAll("\"","")
-                        .replaceAll(",", "");
+                        .replaceAll(",", ".");
             }
         }
         return null;

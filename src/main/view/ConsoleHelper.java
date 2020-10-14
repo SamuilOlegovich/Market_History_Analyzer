@@ -136,8 +136,6 @@ public class ConsoleHelper {
                 + " ----- на сколько время в терминале отстает или опережает местное\n"
                 + "readHistoryOrConvertFilesToHistory === " + Gasket.isReadHistoryOrConvertFilesToHistory()
                 + " ----- считать историю или конвертировать файлы в историю (при первом старте должно быть false)\n"
-                + "takeAndStopOrNot === " + Gasket.isTakeAndStopOrNot()
-                + " ----- определать направление по тейку и стопу или по последней свече (true -> по тейкам и стопам)\n"
                 + "\n";
     }
 

@@ -55,17 +55,17 @@ public class HistoryIterator extends Thread {
                 if (intermediatePatternList.size() == patternSize) break;
             }
 
-            if (a == (historyList.size() / 100) * 10) ConsoleHelper.writeMessage("10%");
-            if (a == (historyList.size() / 100) * 20) ConsoleHelper.writeMessage("20%");
-            if (a == (historyList.size() / 100) * 30) ConsoleHelper.writeMessage("30%");
-            if (a == (historyList.size() / 100) * 40) ConsoleHelper.writeMessage("40%");
-            if (a == (historyList.size() / 100) * 50) ConsoleHelper.writeMessage("50%");
-            if (a == (historyList.size() / 100) * 60) ConsoleHelper.writeMessage("60%");
-            if (a == (historyList.size() / 100) * 70) ConsoleHelper.writeMessage("70%");
-            if (a == (historyList.size() / 100) * 80) ConsoleHelper.writeMessage("80%");
-            if (a == (historyList.size() / 100) * 90) ConsoleHelper.writeMessage("90%");
+            if (a == (historyList.size() / 100) * 10) ConsoleHelper.writeMessage(StringHelper.getString("10%"));
+            if (a == (historyList.size() / 100) * 20) ConsoleHelper.writeMessage(StringHelper.getString("20%"));
+            if (a == (historyList.size() / 100) * 30) ConsoleHelper.writeMessage(StringHelper.getString("30%"));
+            if (a == (historyList.size() / 100) * 40) ConsoleHelper.writeMessage(StringHelper.getString("40%"));
+            if (a == (historyList.size() / 100) * 50) ConsoleHelper.writeMessage(StringHelper.getString("50%"));
+            if (a == (historyList.size() / 100) * 60) ConsoleHelper.writeMessage(StringHelper.getString("60%"));
+            if (a == (historyList.size() / 100) * 70) ConsoleHelper.writeMessage(StringHelper.getString("70%"));
+            if (a == (historyList.size() / 100) * 80) ConsoleHelper.writeMessage(StringHelper.getString("80%"));
+            if (a == (historyList.size() / 100) * 90) ConsoleHelper.writeMessage(StringHelper.getString("90%"));
             if (a == (historyList.size() - 2)
-                    - Gasket.getNumberFutureCandles()) ConsoleHelper.writeMessage("100%\n");
+                    - Gasket.getNumberFutureCandles()) ConsoleHelper.writeMessage(StringHelper.getString("100%\n"));
 
             if (nextStepIndex != stopSteepIndex) {
                 new SheetComparator(intermediatePatternList, nextStepIndex);
