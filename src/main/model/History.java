@@ -36,12 +36,16 @@ public class History {
     }
 
 
-    public ArrayList<String> getPartHistory(int start, int stop) {
-        ArrayList<String> out = new ArrayList<>();
-        for (int i = start; i <= (stop > historyList.size() ? historyList.size() - 1 : stop); i++) {
-            out.add(historyList.get(i));
-        }
-        return out;
+//    public ArrayList<String> getPartHistory(int start, int stop) {
+//        ArrayList<String> out = new ArrayList<>();
+//        for (int i = start; i <= (stop > historyList.size() ? historyList.size() - 1 : stop); i++) {
+//            out.add(historyList.get(i));
+//        }
+//        return out;
+//    }
+
+    public String getStringIndex(int in) {
+        return historyList.get(in);
     }
 
     public int getHistorySize() {

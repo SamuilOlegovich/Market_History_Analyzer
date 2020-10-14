@@ -25,10 +25,10 @@ public class Analyzer extends Thread {
     @Override
     public void run() {
         getList();
+        buyOrSellThisPattern();
         maxSell = getMaxSell();
         maxBuy = getMaxBuy();
         Gasket.getStatisticsClass().setMaxBuySell(maxBuy, maxSell);
-        buyOrSellThisPattern();
     }
 
 
@@ -61,7 +61,9 @@ public class Analyzer extends Thread {
 
 
     private void buyOrSellThisPattern() {
+
         double start = Double.parseDouble(StringHelper.getStringData(Str.open, historyList.get(0)));
+        // определяем направление патерна либо по тейкам и стопам, либо по послел конечной свече.
         double takeProfit = start + Gasket.getTakeProfit();
         double stopLoss = start - Gasket.getTakeProfit();
         for (String s : historyList) {
@@ -82,8 +84,10 @@ public class Analyzer extends Thread {
 
     // устанавливаем реальное время отсчета и находим его индекс в листе истории
     private void getList() {
-        String time = StringHelper.getStringData(Str.time, historyList.get(start).split(Str.levels.toString())[0]);
+        String time = StringHelper.getStringData(Str.time, Gasket.getHistoryClass()
+                .getStringIndex(start).split(Str.levels.toString())[0]);
         String timeMinute = time.split(":")[1];  // 2020-05-21 15:30:00
+
         if (timeMinute.endsWith("0") || timeMinute.endsWith("5")) start += Gasket.getIndentFromLastLevelInPattern() + 5;
         else if (timeMinute.endsWith("1") || timeMinute.endsWith("6")) start += Gasket.getIndentFromLastLevelInPattern() + 4;
         else if (timeMinute.endsWith("2") || timeMinute.endsWith("7")) start += Gasket.getIndentFromLastLevelInPattern() + 3;
