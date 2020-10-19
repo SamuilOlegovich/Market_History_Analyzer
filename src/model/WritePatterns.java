@@ -32,10 +32,16 @@ public class WritePatterns {
     }
 
 
-    private String getStringWrite(ArrayList<String> in) {
+     private String getStringWrite(ArrayList<String> in) {
+        ArrayList<String> mainLevel = Gasket.getLevelAccountingClass().getMainLevelsList();
         StringBuilder stringBuilder = new StringBuilder();
+
         for (String s : in) {
-            stringBuilder.append(s).append("\n");
+            if (mainLevel.contains(StringHelper.getStringData(Str.type, s))) {
+                stringBuilder.append("MAIN-").append(s).append("\n");
+            } else {
+                stringBuilder.append("SIMPLE-").append(s).append("\n");
+            }
         }
         stringBuilder.append(Str.NEXT.toString()).append("\n");
         return stringBuilder.toString();
