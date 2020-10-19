@@ -44,10 +44,6 @@ public class Analyzer extends Thread {
             double low = Double.parseDouble(StringHelper.getStringData(Str.low, s));
             if (start > low) {
                 result = Math.max(start - low, result);
-//                if (start - low > result) {
-//                    ConsoleHelper.writeMessage(start + "===" + low + "===" + result);
-//                    result = start - low;
-//                }
             }
         }
         return result;
@@ -116,6 +112,5 @@ public class Analyzer extends Thread {
         else if (timeMinute.endsWith("4") || timeMinute.endsWith("9")) start += Gasket.getIndentFromLastLevelInPattern() + 1;
         this.historyList = new ArrayList<>(Gasket.getHistoryClass()
                 .getHistoryList(start, start + Gasket.getNumberFutureCandles() + 1));
-//        ConsoleHelper.writeMessage(historyList.size() + "===" + start + " === ");
     }
 }
